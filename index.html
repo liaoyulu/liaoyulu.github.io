@@ -61,82 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-js自测题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/" class="article-date">
-  <time datetime="2019-12-01T01:56:48.993Z" itemprop="datePublished">2019-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/">js自测题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;<span class="comment">//定义一个构造函数</span></span><br><span class="line">a.b = <span class="number">1</span></span><br><span class="line">a.prototype.b = <span class="number">2</span><span class="comment">//原型对象的b属性为2</span></span><br><span class="line">a.prototype.c = <span class="number">3</span></span><br><span class="line">a.prototype.d = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(a.b)<span class="comment">// 1 对象a的b属性为1 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> a().b)<span class="comment">//2 构造函数返回对象实例继承原型b属性为2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> a()<span class="comment">//创建一个对象实例</span></span><br><span class="line">foo.c = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(foo.c)<span class="comment">//5 </span></span><br><span class="line"><span class="built_in">console</span>.log(foo.d)<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
-<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span><span class="comment">//this指向新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    a:<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> Foo()</span><br><span class="line"><span class="built_in">console</span>.log(bar.a)<span class="comment">//2 如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</span></span><br></pre></td></tr></table></figure>
-<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);<span class="comment">//使用null原型创建原型对象 原型污染无法影响这样的对象。 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"toString"</span> <span class="keyword">in</span> map);<span class="comment">//false null原型没有toString方法 空对象没有原型连</span></span><br><span class="line"><span class="keyword">var</span> map = <span class="built_in">Object</span>.create(&#123;<span class="attr">a</span>:<span class="number">1</span>&#125;);<span class="comment">//&#123;a:1&#125;新创建对象的原型对象。</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"toString"</span> <span class="keyword">in</span> map); <span class="comment">//true  toString是Object的原型办法</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a"</span> <span class="keyword">in</span> map); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj).slice(<span class="number">8</span>,<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>请说明函数foo的作用<br><a href="https://www.cnblogs.com/SallyShan/p/11530619.html" target="_blank" rel="noopener">参考</a><br>foo作用：准确判断数据类型。<br>toString :把一个逻辑值转换成字符串并返回结果<br>call(): 改变this指向<br>slice():返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line">a.bar = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"foo"</span>,</span><br><span class="line">                      &#123; <span class="attr">value</span>: <span class="string">"hi"</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> a.foo)<span class="comment">//False configurable默认False，不能直接删除当前的属性</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> a.bar)<span class="comment">//true  </span></span><br><span class="line"></span><br><span class="line">a.foo = <span class="string">"world"</span></span><br><span class="line"><span class="built_in">console</span>.log(a.foo)<span class="comment">//hi 数据描述符vale和writable writable默认false，不能改变value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> a)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key);<span class="comment">//没有输出 enumerable描述属性是否出现在for in或者object.keys()的遍历中 foo默认false bar被delete</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"foo"</span> <span class="keyword">in</span> a);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"bar"</span> <span class="keyword">in</span> a);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>object.defineProperty(obj.prop.desc)<br>作用：直接在一个对象上定义一个新属性，或者修改一个已存在的属性。</p>
-</blockquote>
-<ol>
-<li><p>obj 需要定义属性的当前对象</p>
-</li>
-<li><p>prop 当前需要定义的属性名</p>
-</li>
-<li><p>desc 属性描述符</p>
-<h3 id="6"><a href="#6" class="headerlink" title="6"></a>6</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a;<span class="comment">//变量声明提升</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">//0 |1:this最终指向的是调用它的对象,这里的函数是被windows调用出来的指向windows。| 0</span></span><br><span class="line"><span class="keyword">new</span> test();<span class="comment">//0 |undefined:构造函数中的this是指向实例的 |0</span></span><br></pre></td></tr></table></figure>
-<h3 id="7"><a href="#7" class="headerlink" title="7"></a>7</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo.f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.prototype.f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">&#125;<span class="comment">// 变量声明会“被提前”了，但是他的赋值，并不会被提前。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'5'</span>);<span class="comment">//函数声明和赋值都会被提前到作用域的顶部</span></span><br><span class="line">&#125;<span class="comment">//函数声明提升</span></span><br><span class="line"><span class="comment">//写出下面的结果</span></span><br><span class="line">foo.f();<span class="comment">//2执行了foo对象的f()方法</span></span><br><span class="line">f();<span class="comment">// 4 声明前置</span></span><br><span class="line"></span><br><span class="line">foo().f();<span class="comment">//1 foo()是函数的调用，foo()对f进行了重新赋值,return this是window，在window中找f(),此时f()别重新赋值了。</span></span><br><span class="line"><span class="keyword">new</span> foo.f();<span class="comment">//2  一个foo.f的实例</span></span><br><span class="line"><span class="keyword">new</span> foo().f();<span class="comment">//3 (new foo()).f() 一个foo的实例，接着执行Foo的实例上的 f函数，那么 先从实例上查找f函数，发现找不到（Foo上有一个静态的bar函数，但是不是实例的方法，只能通过构造函数调用），然后接着从原型链上查找到f方法，调用。</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> foo().f();<span class="comment">//3 new new foo().f() 创建foo实例，创建foo.f(=foo.prototype.f)实例</span></span><br></pre></td></tr></table></figure>
-<p>使用关键字new创建新实例对象经过了以下几步：  </p>
-</li>
-<li><p>创建一个新对象</p>
-</li>
-<li><p>将新对象的_proto_指向构造函数的prototype对象</p>
-</li>
-<li><p>将构造函数的作用域赋值给新对象 （也就是this指向新对象）</p>
-</li>
-<li><p>执行构造函数中的代码（为这个新对象添加属性）</p>
-</li>
-<li><p>返回新的对象</p>
-</li>
-</ol>
-<!--  #### Foo().getName()
-
-输出结果为：1
-原理：Foo()是函数调用，Foo执行体中对getName进行了重新赋值（全局的getName，根据作用域链向上查找），返回的this为window(Foo执行时没有调用，默认为全局)，然后.getName()调用了全局的getName（也就是被Foo执行体重写的getName），所以结果为:1
-#### getName()
-
-输出结果为：1 原理：因为Foo执行体中对全局getName重写了，这时调用的又是全局的getName。所以结果为:1 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/" data-id="ck3wawe0s000120adcchqe1xr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-圖解http總結" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/30/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" class="article-date">
-  <time datetime="2019-11-30T01:46:15.000Z" itemprop="datePublished">2019-11-30</time>
+    <a href="/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" class="article-date">
+  <time datetime="2019-12-08T01:46:15.000Z" itemprop="datePublished">2019-12-08</time>
 </a>
     
   </div>
@@ -147,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/30/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/">圖解http總結</a>
+      <a class="article-title" href="/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/">圖解http總結</a>
     </h1>
   
 
@@ -155,7 +83,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-了解Web及网络基础"><a href="#1-了解Web及网络基础" class="headerlink" title="1 了解Web及网络基础"></a>1 了解Web及网络基础</h2><h3 id="1-1-使用HTTP协议访问Web"><a href="#1-1-使用HTTP协议访问Web" class="headerlink" title="1.1 使用HTTP协议访问Web"></a>1.1 使用HTTP协议访问Web</h3><p><strong>WWW构建技术</strong>:<br>1.SGML作为页面的文本标记语言的HTML<br>2.作为文档传递协议的HTTP  3.指定文档所在地址的URL </p>
+        <h2 id="1-了解Web及网络基础"><a href="#1-了解Web及网络基础" class="headerlink" title="1 了解Web及网络基础"></a>1 了解Web及网络基础</h2><h3 id="1-1-使用HTTP协议访问Web"><a href="#1-1-使用HTTP协议访问Web" class="headerlink" title="1.1 使用HTTP协议访问Web"></a>1.1 使用HTTP协议访问Web</h3><p><strong>WWW构建技术</strong>:<br>1.SGML作为页面的文本标记语言的HTML<br>2.作为文档传递协议的HTTP<br>3.指定文档所在地址的URL </p>
 <h3 id="1-3tcp-ip"><a href="#1-3tcp-ip" class="headerlink" title="1.3tcp/ip"></a>1.3tcp/ip</h3><h4 id="1-3-1TCP-IP协议族"><a href="#1-3-1TCP-IP协议族" class="headerlink" title="1.3.1TCP/IP协议族"></a>1.3.1TCP/IP协议族</h4><p>TCP/IP是互联网相关的各类协议族的总称  </p>
 <h4 id="1-3-2TCP-IP的分层管理"><a href="#1-3-2TCP-IP的分层管理" class="headerlink" title="1.3.2TCP/IP的分层管理"></a>1.3.2TCP/IP的分层管理</h4><p>1.<strong>应用层</strong><br>向用户提供应用服务的通信活动 FTP(文件传输协议)DNS(域名系统)  HTTP在该层<br>2.<strong>传输层</strong><br>为应用层提供网络连接中的两台计算机之间的数据传输 TCP UDP<br>3.<strong>网络层</strong><br>处理网络上流动的数据包。 （规定传输路线到达对方计算机，并把数据包传送给的对方）（在众多选项内选择一条传输路线）  </p>
 <p>4.<strong>链路层</strong>（网络接口层）<br>处理连接网络的硬件部分  </p>
@@ -194,10 +122,7 @@
 </ul>
 </li>
 <li><em>原因*</em>：在 HTTP 通信过程中,请求的编码实体资源尚未全部传输完成之前,浏览器无法显示请求页面。<br><strong>目地</strong>：能够让浏览器逐步显示页面。<br>使用分块传输编码的实体主体会由接收的客户端负责解码,恢复到编码前的实体主体。  <h3 id="3-4发送多种数据的多部分对象集合"><a href="#3-4发送多种数据的多部分对象集合" class="headerlink" title="3.4发送多种数据的多部分对象集合"></a>3.4发送多种数据的多部分对象集合</h3>MIME机制，邮件处理文本、图片、视频等多个不同类型数据。在 MIME 扩展中会使用一种称为<strong>多部分对象集合</strong>(Multipart)的方法,来容纳多不同类型的数据。<br>HTTP 协议中也采纳了多部分对象集合  </li>
-<li>multipart/form-date    </li>
-</ul>
-<p>在 Web 表单文件上传时使用。  </p>
-<ul>
+<li>multipart/form-date<br>在 Web 表单文件上传时使用。  </li>
 <li>multipart/byteranges  </li>
 </ul>
 <p>状态码 206(Partial Content,部分内容)响应报文包含了多个范围的内容时使用。<br><strong>提示</strong>：在 HTTP 报文中使用多部分对象集合时,需要在首部字段里加上Content-type。  </p>
@@ -284,14 +209,86 @@
 <ul>
 <li>MD5 和 SHA-1 等散列值校验的方法,以及用来确认文件的数字签名方法。  <h3 id="HTTP-加密-认证-完整性保护-HTTPS"><a href="#HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="HTTP+ 加密 + 认证 + 完整性保护=HTTPS"></a>HTTP+ 加密 + 认证 + 完整性保护=HTTPS</h3>HTTP通信接口用SSL和TSL协议代替 =&gt; HTTPS有那些功能  </li>
 <li><em>困境*</em>：共享密钥加密困难，通信被监听，密钥暴露  </li>
-<li><em>方案*</em>： 公开加密技术，使用一对密钥，一把是密钥，另一把是公开密钥。发送密文使用对方的公开密钥，自己的私有密钥解密。<br>证明公开密钥正确性的证书<br>SSL的慢：通信慢和消耗CPU及内存等资源，打造哦呵i处理速度慢  <h2 id="10-构建Web内容的技术"><a href="#10-构建Web内容的技术" class="headerlink" title="10 构建Web内容的技术"></a>10 构建Web内容的技术</h2>HTML CSS<br>DOM是用以操作HTML文档和XML文档的API,使用JavaScript等脚本语言对DOM的操作，可以更为见到你的方式控制HTML的改变<h3 id="WEB应用"><a href="#WEB应用" class="headerlink" title="WEB应用"></a>WEB应用</h3>由程序创建的内容动态内容<br>事先准备好的内容 静态内  容    </li>
+<li><em>方案*</em>： 公开加密技术，使用一对密钥，一把是密钥，另一把是公开密钥。发送密文使用对方的公开密钥，自己的私有密钥解密。<br>证明公开密钥正确性的证书<br>SSL的慢：通信慢和消耗CPU及内存等资源，处理速度慢  <h2 id="10-构建Web内容的技术"><a href="#10-构建Web内容的技术" class="headerlink" title="10 构建Web内容的技术"></a>10 构建Web内容的技术</h2>HTML CSS<br>DOM是用以操作HTML文档和XML文档的API,使用JavaScript等脚本语言对DOM的操作，可以更为见到你的方式控制HTML的改变<h3 id="WEB应用"><a href="#WEB应用" class="headerlink" title="WEB应用"></a>WEB应用</h3>由程序创建的内容动态内容<br>事先准备好的内容静态内 容    </li>
 </ul>
 <p><strong>CGI</strong><br><strong>Servet</strong><br><strong>XML</strong>SGML<br><strong>RSS/Atom</strong><br>ajax技术  <strong>JSON</strong>  </p>
 <h2 id="6-HTTP首部-字段"><a href="#6-HTTP首部-字段" class="headerlink" title="6  HTTP首部 字段"></a>6  HTTP首部 字段</h2><h2 id="8-各种认证"><a href="#8-各种认证" class="headerlink" title="8 各种认证"></a>8 各种认证</h2><h2 id="9-基于HTTP的追加协议"><a href="#9-基于HTTP的追加协议" class="headerlink" title="9 基于HTTP的追加协议"></a>9 基于HTTP的追加协议</h2><h2 id="11-Web的攻击技术"><a href="#11-Web的攻击技术" class="headerlink" title="11 Web的攻击技术"></a>11 Web的攻击技术</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/30/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" data-id="ck3wawe2c000320adfx4dhyf6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" data-id="ck3wawe2c000320adfx4dhyf6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js自测题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/" class="article-date">
+  <time datetime="2019-12-01T01:56:48.993Z" itemprop="datePublished">2019-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/">js自测题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;<span class="comment">//定义一个构造函数</span></span><br><span class="line">a.b = <span class="number">1</span></span><br><span class="line">a.prototype.b = <span class="number">2</span><span class="comment">//原型对象的b属性为2</span></span><br><span class="line">a.prototype.c = <span class="number">3</span></span><br><span class="line">a.prototype.d = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(a.b)<span class="comment">// 1 对象a的b属性为1 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> a().b)<span class="comment">//2 构造函数返回对象实例继承原型b属性为2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> a()<span class="comment">//创建一个对象实例</span></span><br><span class="line">foo.c = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(foo.c)<span class="comment">//5 </span></span><br><span class="line"><span class="built_in">console</span>.log(foo.d)<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.a = <span class="number">1</span><span class="comment">//this指向新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    a:<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> Foo()</span><br><span class="line"><span class="built_in">console</span>.log(bar.a)<span class="comment">//2 如果返回值是一个对象，那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例。</span></span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="built_in">Object</span>.create(<span class="literal">null</span>);<span class="comment">//使用null原型创建原型对象 原型污染无法影响这样的对象。 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"toString"</span> <span class="keyword">in</span> map);<span class="comment">//false null原型没有toString方法 空对象没有原型连</span></span><br><span class="line"><span class="keyword">var</span> map = <span class="built_in">Object</span>.create(&#123;<span class="attr">a</span>:<span class="number">1</span>&#125;);<span class="comment">//&#123;a:1&#125;新创建对象的原型对象。</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"toString"</span> <span class="keyword">in</span> map); <span class="comment">//true  toString是Object的原型办法</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a"</span> <span class="keyword">in</span> map); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj).slice(<span class="number">8</span>,<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请说明函数foo的作用<br><a href="https://www.cnblogs.com/SallyShan/p/11530619.html" target="_blank" rel="noopener">参考</a><br>foo作用：准确判断数据类型。<br>toString :把一个逻辑值转换成字符串并返回结果<br>call(): 改变this指向<br>slice():返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line">a.bar = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(a, <span class="string">"foo"</span>,</span><br><span class="line">                      &#123; <span class="attr">value</span>: <span class="string">"hi"</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> a.foo)<span class="comment">//False configurable默认False，不能直接删除当前的属性</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">delete</span> a.bar)<span class="comment">//true  </span></span><br><span class="line"></span><br><span class="line">a.foo = <span class="string">"world"</span></span><br><span class="line"><span class="built_in">console</span>.log(a.foo)<span class="comment">//hi 数据描述符vale和writable writable默认false，不能改变value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> a)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key);<span class="comment">//没有输出 enumerable描述属性是否出现在for in或者object.keys()的遍历中 foo默认false bar被delete</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"foo"</span> <span class="keyword">in</span> a);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"bar"</span> <span class="keyword">in</span> a);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>object.defineProperty(obj.prop.desc)<br>作用：直接在一个对象上定义一个新属性，或者修改一个已存在的属性。</p>
+</blockquote>
+<ol>
+<li><p>obj 需要定义属性的当前对象</p>
+</li>
+<li><p>prop 当前需要定义的属性名</p>
+</li>
+<li><p>desc 属性描述符</p>
+<h3 id="6"><a href="#6" class="headerlink" title="6"></a>6</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> a;<span class="comment">//变量声明提升</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">//0 |1:this最终指向的是调用它的对象,这里的函数是被windows调用出来的指向windows。| 0</span></span><br><span class="line"><span class="keyword">new</span> test();<span class="comment">//0 |undefined:构造函数中的this是指向实例的 |0</span></span><br></pre></td></tr></table></figure>
+<h3 id="7"><a href="#7" class="headerlink" title="7"></a>7</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo.f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.prototype.f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">&#125;<span class="comment">// 变量声明会“被提前”了，但是他的赋值，并不会被提前。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'5'</span>);<span class="comment">//函数声明和赋值都会被提前到作用域的顶部</span></span><br><span class="line">&#125;<span class="comment">//函数声明提升</span></span><br><span class="line"><span class="comment">//写出下面的结果</span></span><br><span class="line">foo.f();<span class="comment">//2执行了foo对象的f()方法</span></span><br><span class="line">f();<span class="comment">// 4 声明前置</span></span><br><span class="line"></span><br><span class="line">foo().f();<span class="comment">//1 foo()是函数的调用，foo()对f进行了重新赋值,return this是window，在window中找f(),此时f()别重新赋值了。</span></span><br><span class="line"><span class="keyword">new</span> foo.f();<span class="comment">//2  一个foo.f的实例</span></span><br><span class="line"><span class="keyword">new</span> foo().f();<span class="comment">//3 (new foo()).f() 一个foo的实例，接着执行Foo的实例上的 f函数，那么 先从实例上查找f函数，发现找不到（Foo上有一个静态的bar函数，但是不是实例的方法，只能通过构造函数调用），然后接着从原型链上查找到f方法，调用。</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> foo().f();<span class="comment">//3 new new foo().f() 创建foo实例，创建foo.f(=foo.prototype.f)实例</span></span><br></pre></td></tr></table></figure>
+<p>使用关键字new创建新实例对象经过了以下几步：  </p>
+</li>
+<li><p>创建一个新对象</p>
+</li>
+<li><p>将新对象的_proto_指向构造函数的prototype对象</p>
+</li>
+<li><p>将构造函数的作用域赋值给新对象 （也就是this指向新对象）</p>
+</li>
+<li><p>执行构造函数中的代码（为这个新对象添加属性）</p>
+</li>
+<li><p>返回新的对象</p>
+</li>
+</ol>
+<!--  #### Foo().getName()
+
+输出结果为：1
+原理：Foo()是函数调用，Foo执行体中对getName进行了重新赋值（全局的getName，根据作用域链向上查找），返回的this为window(Foo执行时没有调用，默认为全局)，然后.getName()调用了全局的getName（也就是被Foo执行体重写的getName），所以结果为:1
+#### getName()
+
+输出结果为：1 原理：因为Foo执行体中对全局getName重写了，这时调用的又是全局的getName。所以结果为:1 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/" data-id="ck3wawe0s000120adcchqe1xr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -448,11 +445,11 @@
       <ul>
         
           <li>
-            <a href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/">js自测题</a>
+            <a href="/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/">圖解http總結</a>
           </li>
         
           <li>
-            <a href="/2019/11/30/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/">圖解http總結</a>
+            <a href="/2019/12/01/js%E8%87%AA%E6%B5%8B%E9%A2%98/">js自测题</a>
           </li>
         
           <li>
