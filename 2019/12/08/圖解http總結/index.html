@@ -21,7 +21,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E6%8A%A5%E6%96%87.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E7%BD%91%E5%85%B3.png">
-<meta property="og:updated_time" content="2019-12-08T01:55:48.353Z">
+<meta property="og:updated_time" content="2019-12-08T02:19:01.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90&#x2F;%E4%BC%A0%E8%BE%93%E6%B5%81.png">
   
@@ -183,24 +183,20 @@
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr>
-<td align="left">### 5.1 用单台虚拟主机实现多个域名</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">一个http服务器可以拥有多个Web站点。这是因为利用了虚拟主机的功能  .</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
 </tbody></table>
 </li>
 </ol>
-<p><strong>问题</strong>：因为同一台服务器托管了两个域名，用DNS服务解析域名后，两者的ip地址相同。<br><strong>解决办法</strong>：在发送http请求时，在Host首部内完整指定主机名或域名的URI  </p>
-<h3 id="5-2-代理、网关、隧道"><a href="#5-2-代理、网关、隧道" class="headerlink" title="5.2 代理、网关、隧道"></a>5.2 代理、网关、隧道</h3><h4 id="5-2-1代理"><a href="#5-2-1代理" class="headerlink" title="5.2.1代理"></a>5.2.1代理</h4><p>代理服务器的基本行为就是接收客户端发送的请求后转发给其他服务器。<br>源服务器：持有资源实体的服务器<br>via首部字段标记经过的主机信息<br><strong>代理的方法</strong> </p>
+<h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p>一个http服务器可以拥有多个Web站点。这是因为利用了虚拟主机的功能  .<br><strong>问题</strong>：因为同一台服务器托管了两个域名，用DNS服务解析域名后，两者的ip地址相同。<br><strong>解决办法</strong>：在发送http请求时，在Host首部内完整指定主机名或域名的URI  </p>
+<h3 id="5-2-代理、网关、隧道"><a href="#5-2-代理、网关、隧道" class="headerlink" title="5.2 代理、网关、隧道"></a>5.2 代理、网关、隧道</h3><h4 id="5-2-1代理"><a href="#5-2-1代理" class="headerlink" title="5.2.1代理"></a>5.2.1代理</h4><p>代理服务器的基本行为就是接收客户端发送的请求后转发给其他服务器。<br>源服务器：持有资源实体的服务器<br>via首部字段标记经过的主机信息<br><strong>代理的方法</strong>   </p>
 <ul>
 <li>缓存代理：预先将缓存保存在代理服务器上，接受到对相同资源的请求时，将缓存返回  。<br>若缓存失败，缓存服务器从源服务器上获取新资源。<br>缓存可以在客户端浏览器中</li>
-<li>透明代理：部队报文进行加工  <h4 id="5-2-2-网关"><a href="#5-2-2-网关" class="headerlink" title="5.2.2 网关"></a>5.2.2 网关</h4>由http请求转化为其他通信协议<br><img src="%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/%E7%BD%91%E5%85%B3.png" alt="网关"><br>提高通信的安全性<h4 id="5-2-3隧道"><a href="#5-2-3隧道" class="headerlink" title="5.2.3隧道"></a>5.2.3隧道</h4>隧道可按要求建立起一条与其他服务器的通信线路,届时使用 SSL 等加密手段进行通信<br>为了安全  <h2 id="6-HTTP首部"><a href="#6-HTTP首部" class="headerlink" title="6 HTTP首部"></a>6 HTTP首部</h2><h3 id="6-1-http报文首部"><a href="#6-1-http报文首部" class="headerlink" title="6.1 http报文首部"></a>6.1 http报文首部</h3>就很多<h2 id="7-https"><a href="#7-https" class="headerlink" title="7 https"></a>7 https</h2>http缺点：</li>
+<li>透明代理：部队报文进行加工  <h4 id="5-2-2-网关"><a href="#5-2-2-网关" class="headerlink" title="5.2.2 网关"></a>5.2.2 网关</h4></li>
+</ul>
+<p>由http请求转化为其他通信协议<br><img src="%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/%E7%BD%91%E5%85%B3.png" alt="网关"><br>提高通信的安全性</p>
+<h4 id="5-2-3隧道"><a href="#5-2-3隧道" class="headerlink" title="5.2.3隧道"></a>5.2.3隧道</h4><p>隧道可按要求建立起一条与其他服务器的通信线路,届时使用 SSL 等加密手段进行通信<br>为了安全  </p>
+<h2 id="6-HTTP首部"><a href="#6-HTTP首部" class="headerlink" title="6 HTTP首部"></a>6 HTTP首部</h2><h3 id="6-1-http报文首部"><a href="#6-1-http报文首部" class="headerlink" title="6.1 http报文首部"></a>6.1 http报文首部</h3><p>就很多</p>
+<h2 id="7-https"><a href="#7-https" class="headerlink" title="7 https"></a>7 https</h2><p>http缺点：</p>
+<ul>
 <li>通信不加密，内容被窃听  </li>
 <li>不验证身份，遭遇伪装  </li>
 <li>无法证明完整，报文被篡改    </li>
@@ -225,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" data-id="ck3wd06my0002tvadbz3n2988" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/08/%E5%9C%96%E8%A7%A3http%E7%B8%BD%E7%B5%90/" data-id="ck3wdpihm0002efadg8ynh9ct" class="article-share-link">Share</a>
       
       
     </footer>
