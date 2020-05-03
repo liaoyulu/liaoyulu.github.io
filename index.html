@@ -228,6 +228,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YOLO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/04/canvas/" itemprop="url">canvas</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-04T00:26:08+08:00">
+                2020-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>给大家简单介绍一下canvas在JS的用法及属性（如有介绍不到位 , 恳求各位大佬担待）;<br>目录</p>
+<h3 id="一、Canvas简介"><a href="#一、Canvas简介" class="headerlink" title="一、Canvas简介"></a>一、Canvas简介</h3><h3 id="二、Canvas基本用法"><a href="#二、Canvas基本用法" class="headerlink" title="二、Canvas基本用法"></a>二、Canvas基本用法</h3><h3 id="三、填充和描边"><a href="#三、填充和描边" class="headerlink" title="三、填充和描边"></a>三、填充和描边</h3><h3 id="四、绘制矩形"><a href="#四、绘制矩形" class="headerlink" title="四、绘制矩形"></a>四、绘制矩形</h3><h3 id="五、绘制路径"><a href="#五、绘制路径" class="headerlink" title="五、绘制路径"></a>五、绘制路径</h3><ul>
+<li>5.1、绘制线段</li>
+<li>5.2、绘制三角形</li>
+<li>5.3、绘制圆弧</li>
+<li>5.4、绘制贝塞尔曲线</li>
+</ul>
+<h4 id="一、Canvas简-介"><a href="#一、Canvas简-介" class="headerlink" title="一、Canvas简 介"></a>一、Canvas简 介</h4><p>&lt;canvas&gt;元素是HTML5新增的，一个可以使用脚本( 通常为JavaScript )在其中绘制图像的HTML元素。它可以用来制作照片集制作简单的动画，甚至可以进行实时视频处理和渲染。<br>&lt;canvas&gt;由API构成，除了具备基本绘图能力的2D上下文，&lt;canvas&gt;还具备一个名为WebGL的3D上下文。</p>
+<h4 id="二、Canvas基本用法-1"><a href="#二、Canvas基本用法-1" class="headerlink" title="二、Canvas基本用法"></a>二、Canvas基本用法</h4><p>使用&lt;canvas&gt;元素之前，必须先设置width和height属性，指定可以绘图( 画布 )的区域大小。<br>出现在开始和结束标签中的内容是后备信息，如果浏览器不支持&lt;canvas&gt;元素，就会显示这些信息。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span> = <span class="string">"drawing"</span> <span class="attr">width</span> = <span class="string">"600"</span> <span class="attr">height</span> = <span class="string">"600"</span>&gt;</span>A drwaing of something.<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>要在这块画布上绘图，必须要使用getContext()方法传入参数”2d”取得2d上下文对象( 画笔 )。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var drawing = document.getElementById("drawing");</span><br><span class="line">//确定浏览器支持<span class="tag">&lt;<span class="name">canvas</span>&gt;</span>元素</span><br><span class="line">if（drawing.getContext &#123;</span><br><span class="line">        var ctx = drawing.getContext("2d");//取得2d上下文对象(画笔)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用2d绘图上下文提供方法，可以绘制简单的2d图形，比如矩形、弧线和路径等等。<br>2d上下文的坐标开始于&lt;canvas&gt;元素的左上角，原点坐标是（0，0）。<br>所有坐标值都基于这个原点计算，x值越大表示越靠右，y值越大越靠下。</p>
+<h4 id="三、填充和描边-1"><a href="#三、填充和描边-1" class="headerlink" title="三、填充和描边"></a>三、填充和描边</h4><p>2d上下文的两种基本绘图操作是填充和描边。<br>填充就是指定的样式(颜色、渐变或图像) 填充图形，fill()默认为黑色，fillStyle = “任意颜色”。<br>描边就是图形边缘画线，*stroke()默认也是黑色，<br>strokeStyle = “任意颜色”来设置描边样式。<br>这两个属性的值可以是字符串、渐变对象或模式对象，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext) &#123;</span><br><span class="line"><span class="keyword">var</span> ctx = drawing.getContext(<span class="string">"2d"</span>);</span><br><span class="line"><span class="comment">//填充</span></span><br><span class="line">ctx.fill();<span class="comment">//默认黑色</span></span><br><span class="line">ctx.fillStyle = <span class="string">"red"</span> <span class="comment">//设置为红色</span></span><br><span class="line"><span class="comment">//描边</span></span><br><span class="line">ctx.stroke();<span class="comment">//默认黑色</span></span><br><span class="line">ctx.strokeStyle = <span class="string">"green"</span><span class="comment">//设置为绿色</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="四、绘制矩形-1"><a href="#四、绘制矩形-1" class="headerlink" title="四、绘制矩形"></a>四、绘制矩形</h4><p>与绘制矩形有关的方法包括：<br>fillRect()<br>strokeRect()<br>clearRect()<br>这三个方法都是能接收四个参数：矩形的x坐标、矩形的y坐标矩形的width(宽)、矩形的height(高)，参数都是px(像素)。<br>示例1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext) &#123;</span><br><span class="line"><span class="keyword">var</span> ctx = drawing.getContext(<span class="string">"2d"</span>);</span><br><span class="line"><span class="comment">//绘制红色矩形</span></span><br><span class="line">ctx.fillStyle  = <span class="string">"red"</span>;</span><br><span class="line">ctx.fillRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/rectangle.webp" alt="矩形1"><br>示例2:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">    <span class="comment">//绘制红色描边矩形</span></span><br><span class="line">    context.strokeStyle = <span class="string">"#F00"</span>;</span><br><span class="line">    context.strokeRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="comment">//绘制半透明的蓝色描边矩形</span></span><br><span class="line">    context.strokeStyle = <span class="string">"rgba(0, 0, 255, 0.5)"</span>;</span><br><span class="line">    context.strokeRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/rectangle2.webp" alt="矩形1"><br>示例3:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">    <span class="comment">//绘制红色矩形</span></span><br><span class="line">    context.fillStyle = <span class="string">"#F00"</span>;</span><br><span class="line">    context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="comment">//绘制半透明的蓝色描边矩形</span></span><br><span class="line">    context.fillStyle = <span class="string">"rgba(0, 0, 255, 0.5)"</span>;</span><br><span class="line">    context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="comment">//在两个矩形重叠的地方清除一个小矩形</span></span><br><span class="line">    context.clearRect(<span class="number">40</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/rectangle3.webp" alt="矩形1">  </p>
+<h4 id="五、绘制路径-1"><a href="#五、绘制路径-1" class="headerlink" title="五、绘制路径"></a>五、绘制路径</h4><p>绘制方法:<br>·beginPath() ：表示要开始绘制新路径。<br>·moveTo()：起点坐标(x,y)。<br>·lineTo()：从起点坐标到开始绘制一条线，到(x,y)。<br>·rect(x,y,width,height)：从点(x,y)开始绘制一个  矩形，宽度和高度分别由width和height指定。这个方法绘制的是矩形路径，而不是strokeRect()和fillRect()所绘制的独立的形状。<br>·arc(x,y,r,start,end,flase||true)：以(x,y)为圆心绘制一条弧线，弧线半径为r，起始结束角度 (用弧线表示)分别为start和end。最后一个参数true和flase是否按逆时针方向计算，(值为true表示按逆时针计算)<br>·quadraticCurveTo(cx,cy,x,y)：绘制二次贝塞尔<br>·bezierCyrverTo(c1x,c1y,c2x,c2y,x,y)：绘制三次贝塞尔曲线。<br>·closePath()：绘制一条连接到路径起点的线条。<br>·fill()：使用fillStyle填充已经完成的路径<br>·stroke()：使用strokeStyle为已经完成的路径描边 </p>
+<h5 id="5-1、绘制线段"><a href="#5-1、绘制线段" class="headerlink" title="5.1、绘制线段"></a>5.1、绘制线段</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">    context.beginPath();        <span class="comment">//开始绘制新路径</span></span><br><span class="line">    context.moveTo(<span class="number">50</span>, <span class="number">50</span>);     <span class="comment">//把画笔移动到指定的坐标</span></span><br><span class="line">    context.lineTo(<span class="number">200</span>, <span class="number">50</span>);    <span class="comment">//绘制一条从当前位置到指定坐标(200, 50)的直线</span></span><br><span class="line">    context.stroke();           <span class="comment">//绘制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5-2、绘制三角形"><a href="#5-2、绘制三角形" class="headerlink" title="5.2、绘制三角形"></a>5.2、绘制三角形</h5><p>绘制三角形边框：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line">       <span class="comment">//确定浏览器支持/&lt;canvas&gt;元素</span></span><br><span class="line">       <span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">           <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象  </span></span><br><span class="line">           ctx.beginPath();           <span class="comment">//开始绘制新路径</span></span><br><span class="line">           ctx.moveTo(<span class="number">50</span>,<span class="number">50</span>);         <span class="comment">//把画笔移动到指定的坐标</span></span><br><span class="line">           ctx.lineTo(<span class="number">200</span>,<span class="number">50</span>);       <span class="comment">//绘制一条从坐标(50, 50)到坐标(200, 50)的直线</span></span><br><span class="line">           ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);    <span class="comment">//绘制一条从坐标(200, 50)到坐标(200, 200)的直线</span></span><br><span class="line">           ctx.closePath();      <span class="comment">//闭合路径，绘制一条从路径起点到路径终点的直线</span></span><br><span class="line">           ctx.stroke();       <span class="comment">//为路径描边</span></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/triangle.webp" alt="矩形1"><br>填充三角形：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line">       <span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line">       <span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">           <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">           ctx.beginPath();           <span class="comment">//开始绘制新路径</span></span><br><span class="line">           ctx.moveTo(<span class="number">50</span>,<span class="number">50</span>);         <span class="comment">//把画笔移动到指定的坐标</span></span><br><span class="line">           ctx.lineTo(<span class="number">200</span>,<span class="number">50</span>);       <span class="comment">//绘制一条从坐标(50, 50)到坐标(200, 50)的直线</span></span><br><span class="line">           ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);    <span class="comment">//绘制一条从坐标(200, 50)到坐标(200, 200)的直线</span></span><br><span class="line">           ctx.closePath();      <span class="comment">//闭合路径，绘制一条从路径起点到路径终点的直线</span></span><br><span class="line">           ctx.stroke();       <span class="comment">//填充三角形</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/triangle2.webp" alt="矩形1"></p>
+<h5 id="5-3、绘制圆弧"><a href="#5-3、绘制圆弧" class="headerlink" title="5.3、绘制圆弧"></a>5.3、绘制圆弧</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">    context.beginPath();        <span class="comment">//开始绘制新路径</span></span><br><span class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">99</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI, <span class="literal">false</span>);   </span><br><span class="line">    context.stroke();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5-4、绘制贝塞尔曲线"><a href="#5-4、绘制贝塞尔曲线" class="headerlink" title="5.4、绘制贝塞尔曲线"></a>5.4、绘制贝塞尔曲线</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</span><br><span class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></span><br><span class="line"><span class="keyword">if</span>(drawing.getContext)&#123;</span><br><span class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>); <span class="comment">//取得2D上下文对象</span></span><br><span class="line">    context.beginPath();</span><br><span class="line">    context.moveTo(<span class="number">10</span>, <span class="number">200</span>);    <span class="comment">//起始点</span></span><br><span class="line">    <span class="keyword">var</span> x1 = <span class="number">40</span>, y1 = <span class="number">100</span>;      <span class="comment">//控制点</span></span><br><span class="line">    <span class="keyword">var</span> x2 = <span class="number">200</span>, y2 = <span class="number">200</span>;     <span class="comment">//结束点</span></span><br><span class="line">    <span class="comment">//绘制贝塞尔曲线</span></span><br><span class="line">    context.quadraticCurveTo(x1, y1, x2, y2);</span><br><span class="line">    context.stroke();</span><br><span class="line">    context.beginPath();</span><br><span class="line">    context.rect(<span class="number">10</span>, <span class="number">200</span>, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    context.rect(x1, y1, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    context.rect(x2, y2, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">    context.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/05/04/canvas/wtf.webp" alt="buzhi"><br>链接：<a href="https://www.jianshu.com/p/01e94b6d5ce9" target="_blank" rel="noopener">https://www.jianshu.com/p/01e94b6d5ce9</a><br>来源：简书</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -937,7 +1088,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -978,7 +1129,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
