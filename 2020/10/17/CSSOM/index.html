@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="初探CSS对象模型（CSSOM）CSSOM是什么？CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。 CSSOM在W3C规范中有一个独立的模块，对于我们学习CSSOM还是很有帮助的，但相较于MDN而来，更难于阅读和理解。 为了更好的理解CSSOM是什么？我来们先来看一个简单的示例。 1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSSOM">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;index.html">
+<meta property="og:site_name" content="YOLO">
+<meta property="og:description" content="初探CSS对象模型（CSSOM）CSSOM是什么？CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。 CSSOM在W3C规范中有一个独立的模块，对于我们学习CSSOM还是很有帮助的，但相较于MDN而来，更难于阅读和理解。 为了更好的理解CSSOM是什么？我来们先来看一个简单的示例。 1234567891">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-14.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-16.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-17.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-18.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-19.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-20.png">
+<meta property="og:updated_time" content="2020-10-17T18:17:20.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;10&#x2F;17&#x2F;CSSOM&#x2F;cssom-3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/17/CSSOM/"/>
+
+
+
+
+
+  <title>CSSOM | YOLO</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">YOLO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/17/CSSOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YOLO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSSOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-17T09:21:29+08:00">
+                2020-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="初探CSS对象模型（CSSOM）"><a href="#初探CSS对象模型（CSSOM）" class="headerlink" title="初探CSS对象模型（CSSOM）"></a>初探CSS对象模型（CSSOM）</h2><h2 id="CSSOM是什么？"><a href="#CSSOM是什么？" class="headerlink" title="CSSOM是什么？"></a>CSSOM是什么？</h2><p>CSSOM是一组允许JavaScript操作CSS的API。它非常类似于DOM，但是用于CSS而不是HTML。它允许用户动态读取和修改CSS样式。</p>
+<p>CSSOM在W3C规范中有一个独立的模块，对于我们学习CSSOM还是很有帮助的，但相较于MDN而来，更难于阅读和理解。</p>
+<p>为了更好的理解CSSOM是什么？我来们先来看一个简单的示例。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="selector-tag">DOCTYPE</span> <span class="selector-tag">html</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">html</span>&gt;</span><br><span class="line">    &lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</span><br><span class="line">        &lt;link href="style.css" rel="stylesheet"&gt;</span><br><span class="line">        &lt;title&gt;Critical Path&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;<span class="selector-tag">body</span>&gt;</span><br><span class="line">        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;</span><br><span class="line">        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">// style.css</span><br><span class="line"><span class="selector-tag">body</span> &#123; </span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123; </span><br><span class="line">    <span class="attribute">font-weight</span>: bold </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span> &#123; </span><br><span class="line">    <span class="attribute">color</span>: red </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span> &#123; </span><br><span class="line">    <span class="attribute">display</span>: none </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123; </span><br><span class="line">    <span class="attribute">float</span>: right </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个非常简单的Web页面，“包含了一些文本和一幅图片”。浏览器处理这个页面的过程如下：<br><img src="/2020/10/17/CSSOM/cssom-3.png" alt="处理过程"><br>根据前面所学，其对应的DOM结构建如下：<br><img src="/2020/10/17/CSSOM/cssom-4.png" alt="dom构建"></p>
+<p>对于Web的样式，其处理HTML有点类似，需要将收到的CSS规则转换成某种浏览器能够理解和处理的东西。因此，我们会重复HTML过程，只不过是为CSS而不是HTML:<br><img src="/2020/10/17/CSSOM/cssom-5.png" alt="处理过程"></p>
+<p>CSS字节转换成字符，接着转换成令牌和节点，最后链接到一个CSSOM的树结构中：<br><img src="/2020/10/17/CSSOM/cssom-6.png" alt="处理过程"></p>
+<p>是不是看上去和DOM结构树类似呀。那么CSSOM为何具有树结构呢？为页面上的任何对象计算最后一组样式时，浏览器都会先从适用于该节点的最通用规则开始，比如，如果该节点是body元素的子元素，则应用所有body样式，然后通过应用更具体的规则（这里将会运用CSS层级相关的管理规则）以递归方式优化计算的样式。</p>
+<p>上面的示例就很形象的介绍了CSSOM。</p>
+<blockquote>
+<p>注意，上图显示的树并非是一颗完整的CSSOM树，它只显示了我们决定在样式表中替换的样式。</p>
+</blockquote>
+<p>事实上这一过程是相当复杂的过程，在这里不做过多的介绍，如果你感兴趣的话，可以看其他文章</p>
+<h2 id="使用ele-style设置元素行内样式"><a href="#使用ele-style设置元素行内样式" class="headerlink" title="使用ele.style设置元素行内样式"></a>使用ele.style设置元素行内样式</h2><p>在Web开发中，我们有的时候需要动态的控制HTML元素的样式，对于这样的场景，大多数都是通过JavaScript的API来控制HTML的style属性。面对这样的场景是使用ele.style这个API来控制style对象。我们可以通过在浏览器的控制台中，输入$0.style可以输出对应元素的style所对应的属性：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-1.png" alt="处理过程"><br>比如我们要修改表单元素input的背景颜色，我们可以这么做：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.style.backgroundColor='green'</span><br></pre></td></tr></table></figure>
+<p>这样元素input自动加下了style属性，而且值为background-color: green。同时表单的背景颜色变成了green：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-2.png" alt="处理过程"></p>
+<blockquote>
+<p>$0是浏览器调试器中的一个技巧，指定是选择中的元素。在实际使用的时候，可以通过JavaScript选择器相关的API来获取你想要的DOM元素。最为常见的就是使用getElement* 和 querySelector* API，有关于这方面更为详细的介绍，可以<br>查资料</p>
+</blockquote>
+<p>也就是说，我们可以使用相同的格式添加或更改页面上任何对象的CSS：ele.style.propertyName，其中ele指的是DOM元素，propertyName指的是希望给ele元素要添加的样式属性（记住，带有-中划线的CSS属性需要改用陀峰形式，比如上面示例中的background-color属性要写成backgroundColor）。</p>
+<blockquote>
+<p>注意，在动态设置float属性时，需要使用cssFloat，这是因为float是JavaScript中的一个关键词。这个有点类似于getAttribute()给HTML元素设置for属性时，需要使用htmlFor。</p>
+</blockquote>
+<p>这种方式是使用JavaScript给DOM元素设置样式最简单的方法。但是以这种方式给DOM元素设置样式有一个最大的局限性：只能给DOM元素添加内联样式。同样的，如果我们想获取一个DOM元素的内联样式中某个属性的值时，也可以采用这种方式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.style.backgroundColor // =&gt; green</span><br></pre></td></tr></table></figure>
+<p>当然，通过上面方式获取DOM元素内联样式对应属性的值时，有个前提条件，那就是该元素定义了该内联样式。如果未指定（定义）该样式，那么将不会返回任何值：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.style.color // =&gt; ""</span><br></pre></td></tr></table></figure>
+<p>在CSS Houdini中的CSSOM，我们可以使用.attributeStyleMap属性来替代ele.style。可以使用ele.attributeStyleMap.set(property, value)来设置元素内联样式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.attributeStyleMap.set('background-color', 'green')</span><br></pre></td></tr></table></figure>
+<p>其得到的效果和ele.style.property = value等同的效果。另外，.attributeStyleMap类似于Map对象，所以它们支持对象常有的一些方法，比如get、set、keys、values和entry等。这样让我们的工作也变得更为灵活：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$0.attributeStyleMap.set('background-color', 'green') // 设置background-color的值为green</span><br><span class="line">$0.attributeStyleMap.get('background-color').value === 'green' // =&gt; false</span><br><span class="line">$0.attributeStyleMap.has('background-color') // =&gt; true</span><br><span class="line">$0.attributeStyleMap.delete('background-color') // =&gt; 删除background-color</span><br><span class="line">$0.attributeStyleMap.clear() // =&gt; 删除所有样式</span><br></pre></td></tr></table></figure>
+<h2 id="获取计算样式"><a href="#获取计算样式" class="headerlink" title="获取计算样式"></a>获取计算样式</h2><p>我们可以使用window.getComputedStyle()方法获取元素上任何CSS的计算值。<br><img src="/2020/10/17/CSSOM/cssom-7.png" alt="处理过程"></p>
+<p>在浏览器的Computed一项中，我们可以查看到任何元素具有的可计算的样式。如上图所示。那么我们可以通过window.getComputedStyle()方法获取相应的计算样式，比如像下面这样：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.getComputedStyle($0).backgroundColor // =&gt; "rgb(0, 128, 0)"</span><br></pre></td></tr></table></figure>
+<p>上面只是获取了其中一个计算样式值。除了上述的方式，我们还可以通过其他的方式来获取，比如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">window</span><span class="selector-class">.getComputedStyle</span>(<span class="selector-tag">el</span>)<span class="selector-class">.backgroundColor</span>;</span><br><span class="line"><span class="selector-tag">window</span><span class="selector-class">.getComputedStyle</span>(<span class="selector-tag">el</span>)<span class="selector-attr">['background-color']</span>;</span><br><span class="line">window.getComputedStyle(el).getPropertyValue('background-color');</span><br></pre></td></tr></table></figure>
+<p>而在新的CSSOM中有一个新的API，可以让我们获取计算值。比如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">el.computedStyleMap().get('opacity').value // =&gt; 0.5</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，window.getComputedStyle()和ele.computedStyleMap()的差别是，前者返回的是解析值，而后值返回计算值。类如，如果你的样式中有一个这样的值，width: 50%，那么在Typed OM中将保留百分值（width: 50%）;而CSSOM中返回的是解析值（width: 200px）。</p>
+</blockquote>
+<p>上面示例中，window.getComputedStyle()方法只传了一个参数，对于普通元素可以省略第二个参数，或者显示的传一个null值：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">window</span><span class="selector-class">.getComputedStyle</span>(<span class="selector-tag">ele</span>, <span class="selector-tag">null</span>)<span class="selector-class">.property</span>;</span><br></pre></td></tr></table></figure>
+<p>其实，它有一个小细节，它允许你检索伪元素的样式信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.getComputedStyle(ele, '::before').property;</span><br></pre></td></tr></table></figure>
+<h2 id="CSSStyleDeclaration-相关API"><a href="#CSSStyleDeclaration-相关API" class="headerlink" title="CSSStyleDeclaration 相关API"></a>CSSStyleDeclaration 相关API</h2><p>通过前面的内容我们知道如何通过style对象或使用getComputedStyle()访问样式属性，这两个其实是CSSStyleDeclaration接口。也就是说，我们可以像下面这样将body元素上返回一个CSSStyleDeclaration对象：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">document</span><span class="selector-class">.body</span><span class="selector-class">.style</span>;</span><br><span class="line"><span class="selector-tag">window</span><span class="selector-class">.getComputedStyle</span>(<span class="selector-tag">document</span><span class="selector-class">.body</span>);</span><br></pre></td></tr></table></figure>
+<p>我们可以在浏览器控制台中看到上面的命令将会输出的内容：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-8.png" alt="处理过程"></p>
+<p>这两者有点不同，前者其实是前面介绍的ele.style，它可以获取和设置元素CSS属性的值，只不过只是给元素添加内联样式；但window.getComputedStyle(ele)获取的是只读值。</p>
+<p>CSSStyleDeclaration有几个常用的方法：</p>
+<p>setProperty()：给一个声明了CSS样式的对象设置一个新的值<br>getPropertyValue()：用来获取CSS属性的值<br>item()：通过下标从CSSStyleDeclaration返回一个CSS属性值<br>getPropertyPriority()：根据传入的CSS属性，返回一个DOMString来表示该属性的权重（优先级）<br>removeProperty()：移除style对象的一个属性<br>接下来分别看这几个方法是如何使用的。</p>
+<h2 id="setProperty"><a href="#setProperty" class="headerlink" title="setProperty()"></a>setProperty()</h2><p>该方法可以给CSS的属性设置一个新的值。可以像下面这样使用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ele</span><span class="selector-class">.style</span><span class="selector-class">.setProperty</span>(<span class="selector-tag">property</span>, <span class="selector-tag">value</span>, <span class="selector-tag">priority</span>)</span><br></pre></td></tr></table></figure>
+<p>其中property指的是CSS属性，value设置的属性的值，priority允许设置CSS的权重，即!important。比如下面这个示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$0.style.setProperty('color', 'red')</span><br><span class="line"></span><br><span class="line">window.getComputedStyle($0).color  // =&gt; "rgb(255, 0, 0)"</span><br></pre></td></tr></table></figure>
+<h2 id="getPropertyValue"><a href="#getPropertyValue" class="headerlink" title="getPropertyValue()"></a>getPropertyValue()</h2><p>该方法可以用来获取CSS属性的值，比如像下面这样：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.style.getPropertyValue('color')  // =&gt; "red"</span><br></pre></td></tr></table></figure>
+<p>使用该方法时，如果getComputedStyle没有给元素指定属性时，它将返回一个空字符串：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$0.style.getPropertyValue('background-color') // =&gt; ""</span><br></pre></td></tr></table></figure>
+<h2 id="item"><a href="#item" class="headerlink" title="item()"></a>item()</h2><p>在CSSStyleDeclaration的item()方式可以让我们通过下标从CSSStyleDeclaration返回一个CSS属性值。其使用格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ele</span><span class="selector-class">.style</span><span class="selector-class">.item</span>(<span class="selector-tag">index</span>)</span><br></pre></td></tr></table></figure>
+<p>其中index是需要查找节点的索引，索引下标从0开始。如果我们要获取元素行内样式中所有的属性时可以通过下面的方式遍历出来：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(let i = 0; i &lt; $0.style.length; i++) &#123;</span><br><span class="line">    console.log($0.style.item(i))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// =&gt; clear</span><br><span class="line">// =&gt; position</span><br><span class="line">// =&gt; zoom</span><br></pre></td></tr></table></figure>
+<p>这里有一个小细节，item()方法只要传入参数，这个方法就不会抛出异常，当传入的下标越界时会返回空字符串，当未传入参数时会抛出一个TypeError。</p>
+<p><img src="/2020/10/17/CSSOM/cssom-9.png" alt="处理过程"></p>
+<h2 id="getPropertyPriority"><a href="#getPropertyPriority" class="headerlink" title="getPropertyPriority()"></a>getPropertyPriority()</h2><p>getPropertyPriority()方法是一个很有意思的方法。这个方法会根据传入的CSS属性，返回一个DOMString来表示该属性的优先级。如果有的话，则返回important；如果不存在的话，返回空字符串。</p>
+<p>在介绍style.setProperty()方法的时候，我们在给其传参数的时候，第三个参数就可以指定属性的优先级。或者在原有的CSS中带有!important时，该方法也会返回important字符串。比如下面这个小示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$0.style.setProperty('border', '2px solid red', 'important')</span><br><span class="line">$0.style.setProperty('background-color', 'orange')</span><br><span class="line"></span><br><span class="line">$0.style.getPropertyPriority('border')                // =&gt; "important"</span><br><span class="line">$0.style.getPropertyPriority('background-color')      // =&gt; ""</span><br></pre></td></tr></table></figure>
+<p>上面的示例中，第一行代码和第二行代码使用了ele.style.setProperty()方式给元素分别设置了border和background-color两个属性，不同之处是，第一个传了第三个参数priority（即”important”）。这个参数就相当于在给属性值后面附加了!important关键字。</p>
+<p><img src="/2020/10/17/CSSOM/cssom-10.png" alt="处理过程"></p>
+<p>在用!important设置属性之后，使用ele.style.getPropertyPriority()方法检查该属性的优先级。前面也提到过了，如果元素的style中的属性带有!important值，也可以使用该方法进行检查。</p>
+<p>这里有一个小细节需要注意，如果内联样式中的简写属性，比如margin属性值带有!important关键词，如果我们使用ele.style.getPropertyPriority()在检查简写属性或示简写的属性的时，都将返回important的值。比如下面的代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$0.style.getPropertyPriority('margin')       // =&gt;  "important"</span><br><span class="line">$0.style.getPropertyPriority('margin-top')   // =&gt;  "important"</span><br><span class="line">$0.style.getPropertyPriority('margin-right') // =&gt;  "important"</span><br><span class="line">$0.style.getPropertyPriority('margin-bottom')// =&gt;  "important"</span><br><span class="line">$0.style.getPropertyPriority('margin-left')  // =&gt;  "important"</span><br></pre></td></tr></table></figure>
+<h2 id="removeProperty"><a href="#removeProperty" class="headerlink" title="removeProperty()"></a>removeProperty()</h2><p>该方法可以移除style对象的一个属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$0.style.removeProperty('margin')    // =&gt; ""</span><br><span class="line">$0.style.getPropertyValue('margin')  // =&gt; ""</span><br></pre></td></tr></table></figure>
+<p>这个时候，DOM元素中style里的margin属性被移除了，比如下图所示的结果：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-11.png" alt="处理过程"></p>
+<h2 id="CSSStyleSheet接口"><a href="#CSSStyleSheet接口" class="headerlink" title="CSSStyleSheet接口"></a>CSSStyleSheet接口</h2><p>前面我们所聊的内容大部分都是关于元素内联样式（通常局限性较大）和计算样式（通常很有用，但过于具体）。接下来要聊的CSSStyleSheet相关的API是一个更有用的API，它允许检索具有可读和可写值的样式表，而不仅仅是内联样式表。简单地说，该接口代表一个单一的CSS样式表。</p>
+<p>在写Web页面的时候，我们一直都提倡将页面的样式规则放入到一个单一（或多个）样式文件中，或者 标签中。这两种方式写样式都会包含一组CSS规则。每条CSS规则可以通过与之相关联的对象进行操作，这个关联对象实现了CSSStyleRule接口，而CSSStyleRule反过来实现了CSSRule。CSSStyleSheet允许你检测与修改和它相关联的的样式表，包括样式表的规则列表。</p>
+<p>实际上，CSSStyleSheet也实现了更为通用的StyleSheet接口。实现一个document的样式表的CSSStyleSheet列表可以过document.styleSheet属性获取(这个document通过外联样式表或内嵌的style元素定义样式)。</p>
+<p>比如，我们可以使用下面的方式来查看一个页面（文档）中有多少样式表：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.styleSheets.length  // =&gt; 5</span><br></pre></td></tr></table></figure>
+<p>上面代码查询出W3cplus网站总共用了多少个CSS样式表（样式文件）：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-12.png" alt="处理过程"></p>
+<p>同样的，我们可以使用下标索引引用文档中的任何样式表，比如：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-13.png" alt="处理过程"></p>
+<p>我们也可遍历出来所有运用到的样式表的相关信息：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(let i = 0; i &lt; document.styleSheets.length; i++) &#123;</span><br><span class="line">    <span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">document</span><span class="selector-class">.styleSheets</span><span class="selector-attr">[i]</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/10/17/CSSOM/cssom-14.png" alt="处理过程"><br>在上面两个截图中，我们都可以看到cssRules和ownerRule两个属性：</p>
+<ul>
+<li>cssRules：返回样式表中CSS规则的CSSRuleList对象</li>
+<li>ownerRule：如果一个样式表示通过@import规则引入document的，则ownerRule将返回那个CSSImportRule对象，否则返回null<br>其中cssRules属性是较为有用的。此属性提供样式表中包含的所有CSS规则（包括声明块、at-rules和媒体查询等）的列表。</li>
+</ul>
+<p><img src="/2020/10/17/CSSOM/cssom-15.png" alt="处理过程"></p>
+<p>在这个示例中，总共有116个CSS规则。</p>
+<p>在接下来的部分中，我们将详细介绍如何使用这个API来操作和读取外部样式表中的样式。比如我们要把第一个.css文件中所有选择器打印出来，我们就可以像下面这样做：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let myRules = document.styleSheets[0].cssRules</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">for</span> (<span class="selector-tag">i</span> <span class="selector-tag">of</span> <span class="selector-tag">myRules</span>) &#123;</span><br><span class="line">    if (i.type === 1) &#123;</span><br><span class="line">        <span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">i</span><span class="selector-class">.selectorText</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印出来的结果类似下图这样：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-16.png" alt="处理过程"></p>
+<p>在上面的代码中需要注意两件事。首先，把第一个样式表中的cssRules对象赋值给一个变量缓存起来，然后使用for… of循环来循环该对象中的所有规则，检查每个规则的类型。在这种情况之下，我们需要的规则类型(type)是1，它表示STYLE_RULE常量。其他常量包括IMPORT_RULE(对应的type = 3)、MEDIA_RULE（对应的type=4）和KEYFRAMES_RULE（对应的type=7）。更多的类型如下图所示，也可以在MDN上查阅：</p>
+<p><img src="/2020/10/17/CSSOM/cssom-17.png" alt="处理过程"></p>
+<p>同样的，我们可以使用类似的方法打印出@media和@keyframes里面相关的信息。也可以以类似方式打印出类似selectorText相关的信息，比如style、styleMap和cssText等。比如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let myRules = document.styleSheets[0].cssRules</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">for</span> (<span class="selector-tag">i</span> <span class="selector-tag">of</span> <span class="selector-tag">myRules</span>) &#123;</span><br><span class="line">    if (i.type === 1) &#123;</span><br><span class="line">        <span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">i</span><span class="selector-class">.cssText</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印出来的结果类似下图：<br><img src="/2020/10/17/CSSOM/cssom-18.png" alt="处理过程"></p>
+<p>在CSSStyleSheet接口中除了上面提到的两个常见属性之外，还有两个方法，允许你从样式表中添加或删除整个规则。</p>
+<ul>
+<li>insertRule：向样式表中插入一条新规则</li>
+<li>deleteRule：从当前样式表对象中删除指定的样式规则<br>比如我们要给第一个样式表中添加一条新的样式规则：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let firstStylesheet = document.styleSheets[0]</span><br><span class="line">console.log(firstStylesheet.cssRules.length)  // =&gt; 116</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">firstStylesheet</span><span class="selector-class">.insertRule</span>(</span><br><span class="line">    `<span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: orange;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">2em</span>;</span><br><span class="line">    &#125;`,</span><br><span class="line">    <span class="selector-tag">firstStylesheet</span><span class="selector-class">.cssRules</span><span class="selector-class">.length</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+这个时候在样式表中添加了下面的样式：</li>
+</ul>
+<p><img src="/2020/10/17/CSSOM/cssom-19.png" alt="处理过程"></p>
+<p>我也可以通过下面的代码，来验证：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">for</span> (<span class="selector-tag">i</span> <span class="selector-tag">of</span> <span class="selector-tag">firstStylesheet</span><span class="selector-class">.cssRules</span>) &#123;</span><br><span class="line">    if (i.type === 1) &#123;</span><br><span class="line">        <span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">i</span><span class="selector-class">.cssText</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/10/17/CSSOM/cssom-20.png" alt="处理过程"></p>
+<p>其cssRules的length值由116变成117：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(firstStylesheet.cssRules.length)   // =&gt; 117</span><br></pre></td></tr></table></figure>
+<p>stylesheet.insertRule()方法接受两值参数：</p>
+<p>rule：一个字符串，也就是想插入的样式规则，包含选择器和对应的样式规则<br>index：一个数字，表示要插入的位置，这是一个可选参数<br>注意，对于普通样式规则来说,要插入的字符串应该包含选择器和样式声明。对于@规则来说，要插入的字符串应该包含@标识符和样式规则的内容。另外，index未设置的话，则默认为0，新添加的rule将会插入到样式表的最前面，如果index索引值恰好大于cssRules.length，将会抛出一个错误。</p>
+<p>deleteRule()方法相对来说更为容易，它只接受一个参数index。index就是一个数字，用来指定样式规则的位置。作为参数传入的所选index必须小于cssRules.length，否则将抛出错误。比如我们现在要删除刚才新增加的样式规则：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们就可以像下面这样来删除这条规则：</p>
+<p>firstStylesheet.deleteRule(116)<br>对应的样式规则就删除了。如果把116换成117就会报错：</p>
+<p>CSSOM的未来<br>在介绍ele.style这个API的时候，简单的提到过，CSS Houdini中提到了新的CSSOM（即CSS Typed OM）。新的CSSOM相关的API能提供更大的优势。有关于这方面的介绍，可以阅读Google开发者文档中@Eric Bidelman写的博文。</p>
+<p>总结<br>通过JavaScript中的相关API来操作CSS样式表肯定不是每个项目中都会用到的。但文章中提到的一些API的的确确可以帮助我们实现一些复杂交互。因此，掌握这些API是很有必要的，同时能加强我们处理业务的能力。</p>
+<p>摘自<br><a href="https://www.w3cplus.com/javascript/cssom-css-typed-om.html?expire=1602900823&code=xlbFpB4A76Q&sign=dacc0e20f3ecd9b1242729e38fd44687#paywall" target="_blank" rel="noopener">原文</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/16/js%E8%87%AA%E6%B5%8B%E9%A2%98/" rel="next" title="js自测题">
+                <i class="fa fa-chevron-left"></i> js自测题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初探CSS对象模型（CSSOM）"><span class="nav-number">1.</span> <span class="nav-text">初探CSS对象模型（CSSOM）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSSOM是什么？"><span class="nav-number">2.</span> <span class="nav-text">CSSOM是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ele-style设置元素行内样式"><span class="nav-number">3.</span> <span class="nav-text">使用ele.style设置元素行内样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取计算样式"><span class="nav-number">4.</span> <span class="nav-text">获取计算样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSSStyleDeclaration-相关API"><span class="nav-number">5.</span> <span class="nav-text">CSSStyleDeclaration 相关API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setProperty"><span class="nav-number">6.</span> <span class="nav-text">setProperty()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getPropertyValue"><span class="nav-number">7.</span> <span class="nav-text">getPropertyValue()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#item"><span class="nav-number">8.</span> <span class="nav-text">item()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getPropertyPriority"><span class="nav-number">9.</span> <span class="nav-text">getPropertyPriority()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#removeProperty"><span class="nav-number">10.</span> <span class="nav-text">removeProperty()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSSStyleSheet接口"><span class="nav-number">11.</span> <span class="nav-text">CSSStyleSheet接口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
