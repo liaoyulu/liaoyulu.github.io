@@ -79,11 +79,14 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="YOLO">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;12&#x2F;index.html">
+<meta name="description" content="分类 静态查找：只查找特定的记录是都在给定的记录集合中 顺序查找 二分查找 索引查找   动态查找：查找不成功时，将被查找的记录插入到记录集合中，当查找成功时，将内容进行修改或删除 二叉排序树 平衡二叉树 B_树和B+树  一、顺序查找(线性查找)   从表的一段开始，依次将每个元素的关键字给同key进行比较。   复杂度分析：查找成功时的平均查找长度：ASL=(1+……+n)&#x2F;n=(n+1)&#x2F;2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找算法">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;12&#x2F;05&#x2F;%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="YOLO">
+<meta property="og:description" content="分类 静态查找：只查找特定的记录是都在给定的记录集合中 顺序查找 二分查找 索引查找   动态查找：查找不成功时，将被查找的记录插入到记录集合中，当查找成功时，将内容进行修改或删除 二叉排序树 平衡二叉树 B_树和B+树  一、顺序查找(线性查找)   从表的一段开始，依次将每个元素的关键字给同key进行比较。   复杂度分析：查找成功时的平均查找长度：ASL=(1+……+n)&#x2F;n=(n+1)&#x2F;2">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-12-05T07:12:43.858Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -114,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/12/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/12/05/查找算法/"/>
 
 
 
 
 
-  <title>Archive | YOLO</title>
+  <title>查找算法 | YOLO</title>
   
 
 
@@ -139,7 +142,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,74 +260,207 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 12 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/05/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YOLO">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/12/10/%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/" itemprop="url">
-              
-                <span itemprop="name">图解http总结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">查找算法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-10T16:20:31+08:00"
-              content="2019-12-10" >
-          12-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T15:11:16+08:00">
+                2020-12-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>静态查找：只查找特定的记录是都在给定的记录集合中<ul>
+<li>顺序查找</li>
+<li>二分查找</li>
+<li>索引查找</li>
+</ul>
+</li>
+<li>动态查找：查找不成功时，将被查找的记录插入到记录集合中，当查找成功时，将内容进行修改或删除<ul>
+<li>二叉排序树</li>
+<li>平衡二叉树</li>
+<li>B_树和B+树  <h2 id="一、顺序查找-线性查找"><a href="#一、顺序查找-线性查找" class="headerlink" title="一、顺序查找(线性查找)"></a>一、顺序查找(线性查找)</h2></li>
+</ul>
+</li>
+<li>从表的一段开始，依次将每个元素的关键字给同key进行比较。  </li>
+<li>复杂度分析：查找成功时的平均查找长度：ASL=(1+……+n)/n=(n+1)/2  </li>
+<li>时间复杂度：O(n)  <h2 id="二、二分查找"><a href="#二、二分查找" class="headerlink" title="二、二分查找"></a>二、二分查找</h2></li>
+<li>作为二分查找对象的数据集合必须<em>是顺序存储的有序表</em>  ，无序应先进行排序操作  </li>
+<li>基本思想：先将key值与中间结点的关键字比较，若相等查找成功，不相等再根据与中间结点关键字的比较结果确定下一步查找的子表。</li>
+<li>复杂度分析：最坏的情况log2(n+1)。</li>
+<li>时间复杂度O(log2n)<h2 id="差值查找"><a href="#差值查找" class="headerlink" title="差值查找"></a>差值查找</h2>对二分的优化<br>二分：mid=(low+high)/2=low+(high-low)/2<br>插值朝招将1/2进行改进，改进为 key-a[low]/a[high]-a[low]  </li>
+<li>时间复杂度O[log2n],对于分布均与的n很大的查找表来说，较高效<h2 id="斐波那契查找"><a href="#斐波那契查找" class="headerlink" title="斐波那契查找"></a>斐波那契查找</h2>　斐波那契查找与折半查找很相似，他是根据斐波那契序列的特点对有序表进行分割的。他要求开始表中记录的个数为某个斐波那契数小1，及n=F(k)-1;</li>
+</ul>
+<p>三种查找的本质区别是分隔点不同。</p>
+<h2 id="三、索引查找"><a href="#三、索引查找" class="headerlink" title="三、索引查找"></a>三、索引查找</h2><ul>
+<li>在线性表的索引存储结构的基础上进行。<ul>
+<li>稠密索引</li>
+<li>分块索引</li>
+<li>倒排索引</li>
+</ul>
+</li>
+<li>索引查找的基本过程：根据给定的索引值key，在索引表上查找找出索引值等于key的索引项，以确定对应子表在主表中的开始位置和长度，再根据给定的关键字key2，在对应的子表中查找出关键字为key2的元素<h3 id="分块索引查找"><a href="#分块索引查找" class="headerlink" title="分块索引查找"></a>分块索引查找</h3></li>
+<li>要求索引表必须有序，即<strong>分块有序</strong>，块内无序<br>对于分块有序数据集，每一块对应一个索引项。</li>
+<li>设n记录分为m块，每块中t条记录 ASL=1/2((n/t)+t)+1<br>m=t时效率最高=√n +1<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3>记录号表存储所有具有相同次关键字的记录的记录号。  <h2 id="四、树表查找"><a href="#四、树表查找" class="headerlink" title="四、树表查找"></a>四、树表查找</h2><h2 id="二叉树查找算法。-二叉排序树"><a href="#二叉树查找算法。-二叉排序树" class="headerlink" title="二叉树查找算法。(二叉排序树)"></a>二叉树查找算法。(二叉排序树)</h2>基本思想：二叉查找树是先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围。 这个算法的查找效率很高，但是如果使用这种查找方法要首先创建树。<br>二叉查找树的性质：对二叉查找树进行中序遍历，即可得到有序的列</li>
+</ul>
+<p>ASL=log2(n+1)<br>当二叉树是一棵单分支退化树时，ASL=(n+1)/2  </p>
+<h2 id="平衡二叉树-AVL树"><a href="#平衡二叉树-AVL树" class="headerlink" title="平衡二叉树(AVL树)"></a>平衡二叉树(AVL树)</h2><p>平衡二叉树：一种二叉排序树，其中每一个节点的左子树和右子树的高度差至多为1</p>
+<ul>
+<li>平衡因子BF：二叉树结点的左子树深度减去右子树深度</li>
+<li>平衡二叉树的平衡因子只可能是-1,0,1<br>平衡二叉树构建的基本思想：在构建二叉排序树的过程中，每插入一个结点时，先检查是否因插入而破坏了树的平衡性，若是，找出最小不平衡子树。在保持二叉排序树的特性的前提下，调整最小不平衡子树中各结点的链接关系，进行相应的旋转<br>平衡因子&gt;1,最小不平衡子树右旋 &lt;-1左旋，一个+一个-，则调整之后再转<h2 id="多路查找树-B树"><a href="#多路查找树-B树" class="headerlink" title="多路查找树(B树)"></a>多路查找树(B树)</h2>其没一个结点的孩子数可以躲雨两个，且每一个结点处可以存储多个元素<h3 id="B-树"><a href="#B-树" class="headerlink" title="B_树"></a>B_树</h3></li>
+<li>B_树是一种平衡多排序树，平衡指所有叶子结点都在同一层上，从从而可以避免出现像二叉排序那样的分支退化现象。  </li>
+<li>B_树的所有节点的孩子结点数的最大值称为B_树的阶，m表示  </li>
+<li>树中每个结点至多有m个孩子结点</li>
+<li>若根节点不是叶子结点，则根节点至少有两颗子树</li>
+<li>除了跟结点以外，其他节点至少有[m/2]棵子树</li>
+<li>结点的结构：n关键字个数，满足[m/2]&lt;=n&lt;=m-1. par指向双亲节点的指针。Ki为结点关键字且满足Ki&lt;ki+1;;Pi指向该结点的子树根结点且满足Pi指针所指的结点的关键字均大于ki并且小于Ki+1.<h3 id="2-3查找树，3阶"><a href="#2-3查找树，3阶" class="headerlink" title="2-3查找树，3阶"></a>2-3查找树，3阶</h3></li>
+<li>如果中序遍历2-3树就可以得到排好序的序列</li>
+<li>查找思想：查找一个关键字等于给定值key的具体过程 若B_费控，将key与根节点的关键字Ki进行比较<ul>
+<li>若key=Ki,则查找成</li>
+<li>key&lt;k1,则沿着指针P0所指的子树继续查找</li>
+<li>ki&lt;key&lt;ki+1,则沿着指针Pi所指的子树继续查找，</li>
+<li>若key&gt;kn，则沿着指针Pn所指的子树继续查找<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h3></li>
+<li>n棵子树的结点中包含n个关键字</li>
+<li>所有叶子结点包含全部关键字以及指向含有这些关键字的指针，叶子结点依据关键字大小自大到小顺序链接</li>
+<li>所有分支结点看成索引仅索引作用，结点中仅含有其子树中的最大(或最小)关键字  </li>
+</ul>
+</li>
+</ul>
+<p>B和B+树的区别在于，B+树的非叶子结点只包含导航信息，不包含实际的值，所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。</p>
+<h2 id="散列表-哈希表-查找"><a href="#散列表-哈希表-查找" class="headerlink" title="散列表(哈希表)查找"></a>散列表(哈希表)查找</h2><p>新的存储技术：散列技术</p>
+<ul>
+<li>在记录的存储位置和它的关键字之间建立一个确定的对应关系f，使每个关键字key对应一个存储位置f(key)….f叫做散列函数又叫哈希hash函数。采用散列技术将记录存储在一块连续的存储空间中，这块连续存储空间叫做散列表或哈希表  </li>
+</ul>
+<p><strong>查找步骤</strong>：</p>
+<ol>
+<li>存储时依据撒列函数计算记录的散列地址，并按照散列地址存储记录</li>
+<li>查找时按照同样的散列函数记录散列地址，并按此散列地址访问该记录</li>
+</ol>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/14/fullpage-js/" rel="next" title="fullpage.js">
+                <i class="fa fa-chevron-left"></i> fullpage.js
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +468,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -352,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -395,6 +544,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、顺序查找-线性查找"><span class="nav-number">2.</span> <span class="nav-text">一、顺序查找(线性查找)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、二分查找"><span class="nav-number">3.</span> <span class="nav-text">二、二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差值查找"><span class="nav-number">4.</span> <span class="nav-text">差值查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契查找"><span class="nav-number">5.</span> <span class="nav-text">斐波那契查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、索引查找"><span class="nav-number">6.</span> <span class="nav-text">三、索引查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分块索引查找"><span class="nav-number">6.1.</span> <span class="nav-text">分块索引查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒排索引"><span class="nav-number">6.2.</span> <span class="nav-text">倒排索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、树表查找"><span class="nav-number">7.</span> <span class="nav-text">四、树表查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树查找算法。-二叉排序树"><span class="nav-number">8.</span> <span class="nav-text">二叉树查找算法。(二叉排序树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树-AVL树"><span class="nav-number">9.</span> <span class="nav-text">平衡二叉树(AVL树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多路查找树-B树"><span class="nav-number">10.</span> <span class="nav-text">多路查找树(B树)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树"><span class="nav-number">10.1.</span> <span class="nav-text">B_树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3查找树，3阶"><span class="nav-number">10.2.</span> <span class="nav-text">2-3查找树，3阶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-树-1"><span class="nav-number">10.3.</span> <span class="nav-text">B+树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列表-哈希表-查找"><span class="nav-number">11.</span> <span class="nav-text">散列表(哈希表)查找</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -535,6 +700,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

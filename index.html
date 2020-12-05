@@ -196,16 +196,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -217,9 +207,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -234,6 +258,312 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/05/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YOLO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/05/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/" itemprop="url">查找算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-05T15:11:16+08:00">
+                2020-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>静态查找：只查找特定的记录是都在给定的记录集合中<ul>
+<li>顺序查找</li>
+<li>二分查找</li>
+<li>索引查找</li>
+</ul>
+</li>
+<li>动态查找：查找不成功时，将被查找的记录插入到记录集合中，当查找成功时，将内容进行修改或删除<ul>
+<li>二叉排序树</li>
+<li>平衡二叉树</li>
+<li>B_树和B+树  <h2 id="一、顺序查找-线性查找"><a href="#一、顺序查找-线性查找" class="headerlink" title="一、顺序查找(线性查找)"></a>一、顺序查找(线性查找)</h2></li>
+</ul>
+</li>
+<li>从表的一段开始，依次将每个元素的关键字给同key进行比较。  </li>
+<li>复杂度分析：查找成功时的平均查找长度：ASL=(1+……+n)/n=(n+1)/2  </li>
+<li>时间复杂度：O(n)  <h2 id="二、二分查找"><a href="#二、二分查找" class="headerlink" title="二、二分查找"></a>二、二分查找</h2></li>
+<li>作为二分查找对象的数据集合必须<em>是顺序存储的有序表</em>  ，无序应先进行排序操作  </li>
+<li>基本思想：先将key值与中间结点的关键字比较，若相等查找成功，不相等再根据与中间结点关键字的比较结果确定下一步查找的子表。</li>
+<li>复杂度分析：最坏的情况log2(n+1)。</li>
+<li>时间复杂度O(log2n)<h2 id="差值查找"><a href="#差值查找" class="headerlink" title="差值查找"></a>差值查找</h2>对二分的优化<br>二分：mid=(low+high)/2=low+(high-low)/2<br>插值朝招将1/2进行改进，改进为 key-a[low]/a[high]-a[low]  </li>
+<li>时间复杂度O[log2n],对于分布均与的n很大的查找表来说，较高效<h2 id="斐波那契查找"><a href="#斐波那契查找" class="headerlink" title="斐波那契查找"></a>斐波那契查找</h2>　斐波那契查找与折半查找很相似，他是根据斐波那契序列的特点对有序表进行分割的。他要求开始表中记录的个数为某个斐波那契数小1，及n=F(k)-1;</li>
+</ul>
+<p>三种查找的本质区别是分隔点不同。</p>
+<h2 id="三、索引查找"><a href="#三、索引查找" class="headerlink" title="三、索引查找"></a>三、索引查找</h2><ul>
+<li>在线性表的索引存储结构的基础上进行。<ul>
+<li>稠密索引</li>
+<li>分块索引</li>
+<li>倒排索引</li>
+</ul>
+</li>
+<li>索引查找的基本过程：根据给定的索引值key，在索引表上查找找出索引值等于key的索引项，以确定对应子表在主表中的开始位置和长度，再根据给定的关键字key2，在对应的子表中查找出关键字为key2的元素<h3 id="分块索引查找"><a href="#分块索引查找" class="headerlink" title="分块索引查找"></a>分块索引查找</h3></li>
+<li>要求索引表必须有序，即<strong>分块有序</strong>，块内无序<br>对于分块有序数据集，每一块对应一个索引项。</li>
+<li>设n记录分为m块，每块中t条记录 ASL=1/2((n/t)+t)+1<br>m=t时效率最高=√n +1<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3>记录号表存储所有具有相同次关键字的记录的记录号。  <h2 id="四、树表查找"><a href="#四、树表查找" class="headerlink" title="四、树表查找"></a>四、树表查找</h2><h2 id="二叉树查找算法。-二叉排序树"><a href="#二叉树查找算法。-二叉排序树" class="headerlink" title="二叉树查找算法。(二叉排序树)"></a>二叉树查找算法。(二叉排序树)</h2>基本思想：二叉查找树是先对待查找的数据进行生成树，确保树的左分支的值小于右分支的值，然后在就行和每个节点的父节点比较大小，查找最适合的范围。 这个算法的查找效率很高，但是如果使用这种查找方法要首先创建树。<br>二叉查找树的性质：对二叉查找树进行中序遍历，即可得到有序的列</li>
+</ul>
+<p>ASL=log2(n+1)<br>当二叉树是一棵单分支退化树时，ASL=(n+1)/2  </p>
+<h2 id="平衡二叉树-AVL树"><a href="#平衡二叉树-AVL树" class="headerlink" title="平衡二叉树(AVL树)"></a>平衡二叉树(AVL树)</h2><p>平衡二叉树：一种二叉排序树，其中每一个节点的左子树和右子树的高度差至多为1</p>
+<ul>
+<li>平衡因子BF：二叉树结点的左子树深度减去右子树深度</li>
+<li>平衡二叉树的平衡因子只可能是-1,0,1<br>平衡二叉树构建的基本思想：在构建二叉排序树的过程中，每插入一个结点时，先检查是否因插入而破坏了树的平衡性，若是，找出最小不平衡子树。在保持二叉排序树的特性的前提下，调整最小不平衡子树中各结点的链接关系，进行相应的旋转<br>平衡因子&gt;1,最小不平衡子树右旋 &lt;-1左旋，一个+一个-，则调整之后再转<h2 id="多路查找树-B树"><a href="#多路查找树-B树" class="headerlink" title="多路查找树(B树)"></a>多路查找树(B树)</h2>其没一个结点的孩子数可以躲雨两个，且每一个结点处可以存储多个元素<h3 id="B-树"><a href="#B-树" class="headerlink" title="B_树"></a>B_树</h3></li>
+<li>B_树是一种平衡多排序树，平衡指所有叶子结点都在同一层上，从从而可以避免出现像二叉排序那样的分支退化现象。  </li>
+<li>B_树的所有节点的孩子结点数的最大值称为B_树的阶，m表示  </li>
+<li>树中每个结点至多有m个孩子结点</li>
+<li>若根节点不是叶子结点，则根节点至少有两颗子树</li>
+<li>除了跟结点以外，其他节点至少有[m/2]棵子树</li>
+<li>结点的结构：n关键字个数，满足[m/2]&lt;=n&lt;=m-1. par指向双亲节点的指针。Ki为结点关键字且满足Ki&lt;ki+1;;Pi指向该结点的子树根结点且满足Pi指针所指的结点的关键字均大于ki并且小于Ki+1.<h3 id="2-3查找树，3阶"><a href="#2-3查找树，3阶" class="headerlink" title="2-3查找树，3阶"></a>2-3查找树，3阶</h3></li>
+<li>如果中序遍历2-3树就可以得到排好序的序列</li>
+<li>查找思想：查找一个关键字等于给定值key的具体过程 若B_费控，将key与根节点的关键字Ki进行比较<ul>
+<li>若key=Ki,则查找成</li>
+<li>key&lt;k1,则沿着指针P0所指的子树继续查找</li>
+<li>ki&lt;key&lt;ki+1,则沿着指针Pi所指的子树继续查找，</li>
+<li>若key&gt;kn，则沿着指针Pn所指的子树继续查找<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h3></li>
+<li>n棵子树的结点中包含n个关键字</li>
+<li>所有叶子结点包含全部关键字以及指向含有这些关键字的指针，叶子结点依据关键字大小自大到小顺序链接</li>
+<li>所有分支结点看成索引仅索引作用，结点中仅含有其子树中的最大(或最小)关键字  </li>
+</ul>
+</li>
+</ul>
+<p>B和B+树的区别在于，B+树的非叶子结点只包含导航信息，不包含实际的值，所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。</p>
+<h2 id="散列表-哈希表-查找"><a href="#散列表-哈希表-查找" class="headerlink" title="散列表(哈希表)查找"></a>散列表(哈希表)查找</h2><p>新的存储技术：散列技术</p>
+<ul>
+<li>在记录的存储位置和它的关键字之间建立一个确定的对应关系f，使每个关键字key对应一个存储位置f(key)….f叫做散列函数又叫哈希hash函数。采用散列技术将记录存储在一块连续的存储空间中，这块连续存储空间叫做散列表或哈希表  </li>
+</ul>
+<p><strong>查找步骤</strong>：</p>
+<ol>
+<li>存储时依据撒列函数计算记录的散列地址，并按照散列地址存储记录</li>
+<li>查找时按照同样的散列函数记录散列地址，并按此散列地址访问该记录</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/14/fullpage-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YOLO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/14/fullpage-js/" itemprop="url">fullpage.js</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-14T13:46:07+08:00">
+                2020-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="create-beautiful-fullscreen-scrolling-websites"><a href="#create-beautiful-fullscreen-scrolling-websites" class="headerlink" title="create beautiful fullscreen scrolling websites"></a>create beautiful fullscreen scrolling websites</h2><p> 创建单页网站  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1604,398 +1934,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YOLO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/10/%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/" itemprop="url">图解http总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-10T16:20:31+08:00">
-                2019-12-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-了解Web及网络基础"><a href="#1-了解Web及网络基础" class="headerlink" title="1 了解Web及网络基础"></a>1 了解Web及网络基础</h2><h3 id="1-1-使用HTTP协议访问Web"><a href="#1-1-使用HTTP协议访问Web" class="headerlink" title="1.1 使用HTTP协议访问Web"></a>1.1 使用HTTP协议访问Web</h3><p><strong>WWW构建技术</strong>:<br>1.SGML作为页面的文本标记语言的HTML<br>2.作为文档传递协议的HTTP<br>3.指定文档所在地址的URL </p>
-<h3 id="1-3tcp-ip"><a href="#1-3tcp-ip" class="headerlink" title="1.3tcp/ip"></a>1.3tcp/ip</h3><h4 id="1-3-1TCP-IP协议族"><a href="#1-3-1TCP-IP协议族" class="headerlink" title="1.3.1TCP/IP协议族"></a>1.3.1TCP/IP协议族</h4><p>TCP/IP是互联网相关的各类协议族的总称  </p>
-<h4 id="1-3-2TCP-IP的分层管理"><a href="#1-3-2TCP-IP的分层管理" class="headerlink" title="1.3.2TCP/IP的分层管理"></a>1.3.2TCP/IP的分层管理</h4><p>1.<strong>应用层</strong><br>向用户提供应用服务的通信活动 FTP(文件传输协议)DNS(域名系统)  HTTP在该层<br>2.<strong>传输层</strong><br>为应用层提供网络连接中的两台计算机之间的数据传输 TCP UDP<br>3.<strong>网络层</strong><br>处理网络上流动的数据包。 （规定传输路线到达对方计算机，并把数据包传送给的对方）（在众多选项内选择一条传输路线）  </p>
-<p>4.<strong>链路层</strong>（网络接口层）<br>处理连接网络的硬件部分  </p>
-<h4 id="1-3-3tcp-ip-通信传输流"><a href="#1-3-3tcp-ip-通信传输流" class="headerlink" title="1.3.3tcp/ip 通信传输流"></a>1.3.3tcp/ip 通信传输流</h4><p>发送端从应用层往下走，接收端则往应用层往上走<br><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/%E4%BC%A0%E8%BE%93%E6%B5%81.png" alt="传输流"><br>eg<br><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/http-example.png" alt="http-example">  </p>
-<p>层与层之间传输数据时，每经过一层必定会被打上一个该层所属的首部信息。<br>这种把数据信息包装起来的做法称为封装</p>
-<h3 id="1-4-IP-TCP-DNS协议"><a href="#1-4-IP-TCP-DNS协议" class="headerlink" title="1.4 IP TCP DNS协议"></a>1.4 IP TCP DNS协议</h3><p><strong>IP</strong>:位于网络层<br><strong>IP协议</strong>：把各种数据包传送给对方<br><strong>IP地址</strong>:指明节点被分配到的地址<br><strong>MAC地址</strong>:网卡所属的固定地址（ip变网卡一般不变）<br>ip之间的通信依赖MAC地址。通信双方在同一局域网中的情况是很少的，中转设备的MAC地址搜索下一个中转目标<br><strong>APR协议</strong>：解析地址的协议（通过通信双方的IP地址就可以反查处对应的MAC地址）<br><strong>TCP</strong>：传输层 提供可靠的字节流服务(将大块数据分割成以报文段为单位的数据包)。<br>三次握手策略：<img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/three-way-handshaking.png" alt="三次握手">  </p>
-<h3 id="1-5-DNS服务"><a href="#1-5-DNS服务" class="headerlink" title="1.5 DNS服务"></a>1.5 DNS服务</h3><p><strong>DNS</strong>：应用层<br>提供域名到IP地址之间的<strong>解析服务</strong>。<br>计算机一般通过域名或主机名来访问对方的计算机  </p>
-<h3 id="1-7-URI-URL"><a href="#1-7-URI-URL" class="headerlink" title="1.7 URI URL"></a>1.7 URI URL</h3><p><strong>URI(统一资源标识符号)</strong>：标识某一互联网资源。<br><strong>URL()</strong>：资源的地点</p>
-<h4 id="1-7-2-URI格式"><a href="#1-7-2-URI格式" class="headerlink" title="1.7.2 URI格式"></a>1.7.2 URI格式</h4><p><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/URI.png" alt="URI"><br>使用 http: 或 https: 等协议方案名获取访问资源时要指定协议类型。不<br>区分字母大小写,最后附一个冒号(:)。<br>也可使用 data: 或 javascript: 这类指定数据或脚本程序的方案名。<br>登录信息(认证)<br>指定用户名和密码作为从服务器端获取资源时必要的登录信息(身份<br>认证)。此项是可选项。  </p>
-<ul>
-<li>服务器地址<br>使用绝对 URI 必须指定待访问的服务器地址。地址可以是类似<br>hackr.jp 这种 DNS 可解析的名称,或是 192.168.1.1 这类 IPv4 地址<br>名,还可以是 [0:0:0:0:0:0:0:1] 这样用方括号括起来的 IPv6 地址名。  </li>
-<li>服务器端口号<br>指定服务器连接的网络端口号。此项也是可选项,若用户省略则自动使用默认端口号。  </li>
-<li>带层次的文件路径<br>指定服务器上的文件路径来定位特指的资源。这与 UNIX 系统的文件查询字符串<br>针对已指定的文件路径内的资源,可以使用查询字符串传入任意参<br>数。此项可选。  </li>
-<li>片段标识符<br>使用片段标识符通常可标记出已获取资源中的子资源(文档内的某个<br>位置)。但在 RFC 中并没有明确规定其使用方法。该项也为可选<br>项。  <h2 id="2-简单的HTTP协议"><a href="#2-简单的HTTP协议" class="headerlink" title="2 简单的HTTP协议"></a>2 简单的HTTP协议</h2><h3 id="2-2-通过请求和响应的交换达成通信"><a href="#2-2-通过请求和响应的交换达成通信" class="headerlink" title="2.2  通过请求和响应的交换达成通信"></a>2.2  通过请求和响应的交换达成通信</h3>请求报文是由请求方法、请求 URI、协议版本、可选的请求首部字段<br>和内容实体构成的。<br><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png" alt="请求报文"><br>http是一种不保存状态的协议 &gt;&gt;  引入cookie技术，管理状态  <h3 id="2-4-请求URI定位资源"><a href="#2-4-请求URI定位资源" class="headerlink" title="2.4 请求URI定位资源"></a>2.4 请求URI定位资源</h3>http协议使用URI定位互联网上的资源</li>
-<li><em>请求URI的方法*</em>：  </li>
-<li>URI为完整的请求URI ：’GET  <a href="http://hackr.jp/index.htmHTTP/1.1&#39;" target="_blank" rel="noopener">http://hackr.jp/index.htmHTTP/1.1&#39;</a></li>
-<li>在首部字段Host中写明网络域名或IP地址’  </li>
-</ul>
-<p><strong>HTTP/1.1方法</strong><br>GET :获取资源<br>POST:传输实体主体<br>POST 的主要目的并不是获取响应的主体内容。<br>PUT:传输文件<br>HEAD:获得报文首部<br>DELETE :删除文件<br>OPTIONS:询问支持的方法  TRACE:追踪路径<br>CONNECT:要求用隧道协议连接代理<br>与代理服务器通信时建立隧道,实现用隧道协<br>议进行 TCP 通信  </p>
-<h3 id="2-7持久连接节省通信量"><a href="#2-7持久连接节省通信量" class="headerlink" title="2.7持久连接节省通信量"></a>2.7持久连接节省通信量</h3><p>1持久连接：<br>目的:解决每次的请求都会造成无谓的 TCP 连接建立和断开<br>建立 1 次 TCP 连接后进行多次请求和响应的交互<br>2管线化技术:不用等待响应直接发送下一个请求<br>3使用cookie状态管理:<br>通过在请求和响应报文中写入 Cookie 信息来控制客户端的状态。  </p>
-<ol>
-<li>请求报文(没有 Cookie 信息的状态)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /reader/ HTTP/1.1</span><br><span class="line">Host: hackr.jp</span><br><span class="line">*首部字段内没有Cookie的相关信息</span><br></pre></td></tr></table></figure></li>
-<li>响应报文(服务器端生成 Cookie 信息)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Thu, 12 Jul 2012 07:12:20 GMT</span><br><span class="line">Server: Apache</span><br><span class="line">&lt;Set-Cookie: sid=1342077140226724; path=/; expires=Wed,</span><br><span class="line">10-Oct-12 07:12:20 GMT&gt;</span><br><span class="line">Content-Type: text/plain; charset=UTF-8</span><br></pre></td></tr></table></figure></li>
-<li>请求报文(自动发送保存着的 Cookie 信息)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /image/ HTTP/1.1</span><br><span class="line">Host: hackr.jp</span><br><span class="line">Cookie: sid=1342077140226724</span><br></pre></td></tr></table></figure>
-<h2 id="3-HTTP-报文内的-HTTP信息"><a href="#3-HTTP-报文内的-HTTP信息" class="headerlink" title="3 HTTP 报文内的 HTTP信息"></a>3 HTTP 报文内的 HTTP信息</h2><h3 id="3-1http报文"><a href="#3-1http报文" class="headerlink" title="3.1http报文"></a>3.1http报文</h3></li>
-</ol>
-<p>HTTP协议交互的信息被称为http报文<br>请求端(客户端)的HTTP 报文叫做<strong>请求报文</strong>,响应端(服务器端)的叫做<strong>响应报文</strong>。<br>HTTP 报文大致可分为报文首部和报文主体两块<br><strong>报文首部</strong>：服务端或客户端需处理的请求或响应的内容及属性<br><strong>报文主体</strong>:应被发送的数据<br><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/%E6%8A%A5%E6%96%87.png" alt="请求报文和响应报文"></p>
-<ul>
-<li>请求行<br>包含用于请求的方法,请求 URI 和 HTTP 版本。  </li>
-<li>状态行<br>包含表明响应结果的状态码,原因短语和 HTTP 版本。  </li>
-<li>首部字段<br>包含表示请求和响应的各种条件和属性的各类首部。<br>一般有 4 种首部,分别是:通用首部、请求首部、响应首部和实体首部。  <h4 id="3-3-2-压缩传输的内容编码"><a href="#3-3-2-压缩传输的内容编码" class="headerlink" title="3.3.2 压缩传输的内容编码"></a>3.3.2 压缩传输的内容编码</h4>指明应用在实体内容上的编码格式。<br>常见的内容编码  <ul>
-<li>gazip(GNUzip)  </li>
-<li>compress(UNIX系统的标准压缩)  </li>
-<li>deflate(zlib)</li>
-<li>identity(不进行编码 <h4 id="3-3-3分割发送的分块（chunk）传输编码"><a href="#3-3-3分割发送的分块（chunk）传输编码" class="headerlink" title="3.3.3分割发送的分块（chunk）传输编码"></a>3.3.3分割发送的分块（chunk）传输编码</h4></li>
-</ul>
-</li>
-<li><em>原因*</em>：在 HTTP 通信过程中,请求的编码实体资源尚未全部传输完成之前,浏览器无法显示请求页面。<br><strong>目地</strong>：能够让浏览器逐步显示页面。<br>使用分块传输编码的实体主体会由接收的客户端负责解码,恢复到编码前的实体主体。  <h3 id="3-4发送多种数据的多部分对象集合"><a href="#3-4发送多种数据的多部分对象集合" class="headerlink" title="3.4发送多种数据的多部分对象集合"></a>3.4发送多种数据的多部分对象集合</h3>MIME机制，邮件处理文本、图片、视频等多个不同类型数据。在 MIME 扩展中会使用一种称为<strong>多部分对象集合</strong>(Multipart)的方法,来容纳多不同类型的数据。<br>HTTP 协议中也采纳了多部分对象集合  </li>
-<li>multipart/form-date<br>在 Web 表单文件上传时使用。  </li>
-<li>multipart/byteranges  </li>
-</ul>
-<p>状态码 206(Partial Content,部分内容)响应报文包含了多个范围的内容时使用。<br><strong>提示</strong>：在 HTTP 报文中使用多部分对象集合时,需要在首部字段里加上Content-type。  </p>
-<h3 id="3-5获取部分内容的范围请求"><a href="#3-5获取部分内容的范围请求" class="headerlink" title="3.5获取部分内容的范围请求"></a>3.5获取部分内容的范围请求</h3><p><strong>原因</strong>：如果下载过程中遇到网络中断的情况,那就必须重头开始。为了解决上述问题,需要一种<strong>可恢复的机制</strong>。  所谓恢复是指能从之前下载中断处恢复下载。<br><strong>方法</strong>：指定下载的实体范围。<br><strong>范围请求(Range Request)</strong>：指定范围发送的请求。<br>使用首部字段Range来指定资源的byte范围<br><strong>byte范围的制定形式</strong>：（自己查）<br>提示：对于多重范围的范围请求,响应会在首部字段 Content-Type 标明multipart/byteranges 后返回响应报文。  </p>
-<h3 id="3-6内容协商返回最合适的内容"><a href="#3-6内容协商返回最合适的内容" class="headerlink" title="3.6内容协商返回最合适的内容"></a>3.6内容协商返回最合适的内容</h3><p><strong>内容协商机制</strong>：客户端和服务端就响应的资源内容进行交涉，然后提供给客户端最为适合的资源<br><strong>判断依据</strong>：响应资源的语言，字符集，编码方式。<br><strong>三种内容协商技术</strong>  </p>
-<ol>
-<li>服务器驱动协商   </li>
-<li>客户端驱动协商</li>
-<li>透明协商<h2 id="4-返回结果的http状态玛"><a href="#4-返回结果的http状态玛" class="headerlink" title="4 返回结果的http状态玛"></a>4 返回结果的http状态玛</h2><h3 id="4-1-状态码告知从服务器端返回的请求结果"><a href="#4-1-状态码告知从服务器端返回的请求结果" class="headerlink" title="4.1 状态码告知从服务器端返回的请求结果"></a>4.1 状态码告知从服务器端返回的请求结果</h3>状态码类别：  <table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">类别</th>
-<th align="left">原因短语</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1XX</td>
-<td align="left">Informational(信息性状态码)</td>
-<td align="left">接收的请求正在处理</td>
-</tr>
-<tr>
-<td align="left">2XX</td>
-<td align="left">Success(成功状态码)</td>
-<td align="left">请求正常处理完毕</td>
-</tr>
-<tr>
-<td align="left">3XX</td>
-<td align="left">Redirection(重定向状态码)</td>
-<td align="left">需要进行附加操作以完成请求</td>
-</tr>
-<tr>
-<td align="left">4XX</td>
-<td align="left">Client Error(客户端错误状态码)</td>
-<td align="left">服务器无法处理请求</td>
-</tr>
-<tr>
-<td align="left">5XX</td>
-<td align="left">Server Error(服务器错误状态码)</td>
-<td align="left">服务器处理请求出错</td>
-</tr>
-<tr>
-<td align="left">具体 ……………………</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h2 id="5-与HTTP协作的Web服务器"><a href="#5-与HTTP协作的Web服务器" class="headerlink" title="5 与HTTP协作的Web服务器"></a>5 与HTTP协作的Web服务器</h2><h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p>一个http服务器可以拥有多个Web站点。这是因为利用了虚拟主机的功能  .<br><strong>问题</strong>：因为同一台服务器托管了两个域名，用DNS服务解析域名后，两者的ip地址相同。<br><strong>解决办法</strong>：在发送http请求时，在Host首部内完整指定主机名或域名的URI  </p>
-<h3 id="5-2-代理、网关、隧道"><a href="#5-2-代理、网关、隧道" class="headerlink" title="5.2 代理、网关、隧道"></a>5.2 代理、网关、隧道</h3><h4 id="5-2-1代理"><a href="#5-2-1代理" class="headerlink" title="5.2.1代理"></a>5.2.1代理</h4><p>代理服务器的基本行为就是接收客户端发送的请求后转发给其他服务器。<br>源服务器：持有资源实体的服务器<br>via首部字段标记经过的主机信息<br><strong>代理的方法</strong>   </p>
-<ul>
-<li>缓存代理：预先将缓存保存在代理服务器上，接受到对相同资源的请求时，将缓存返回  。<br>若缓存失败，缓存服务器从源服务器上获取新资源。<br>缓存可以在客户端浏览器中</li>
-<li>透明代理：部队报文进行加工  <h4 id="5-2-2-网关"><a href="#5-2-2-网关" class="headerlink" title="5.2.2 网关"></a>5.2.2 网关</h4></li>
-</ul>
-<p>由http请求转化为其他通信协议<br><img src="./%E5%9B%BE%E8%A7%A3http%E6%80%BB%E7%BB%93/%E7%BD%91%E5%85%B3.png" alt="网关"><br>提高通信的安全性</p>
-<h4 id="5-2-3隧道"><a href="#5-2-3隧道" class="headerlink" title="5.2.3隧道"></a>5.2.3隧道</h4><p>隧道可按要求建立起一条与其他服务器的通信线路,届时使用 SSL 等加密手段进行通信<br>为了安全  </p>
-<h2 id="6-HTTP首部"><a href="#6-HTTP首部" class="headerlink" title="6 HTTP首部"></a>6 HTTP首部</h2><h3 id="6-1-http报文首部"><a href="#6-1-http报文首部" class="headerlink" title="6.1 http报文首部"></a>6.1 http报文首部</h3><p>就很多</p>
-<h2 id="7-https"><a href="#7-https" class="headerlink" title="7 https"></a>7 https</h2><p>http缺点：</p>
-<ul>
-<li>通信不加密，内容被窃听  </li>
-<li>不验证身份，遭遇伪装  </li>
-<li>无法证明完整，报文被篡改    </li>
-</ul>
-<p>窃听：收集在互联网上的流动的数据。解析工作交给那些抓包或嗅探器工具。<br><strong>防窃听</strong>：<br>1.加密</p>
-<ul>
-<li>通信加密 通过和 SSL(Secure Socket Layer,安全套接层)或TLS(Transport Layer Security,安全层传输协议)的组合使用,加密 HTTP 的通信内容。</li>
-<li>内容加密 前提：客户uan端和服务器同时具有加密和解密的机制。  </li>
-</ul>
-<p>2.认证</p>
-<ul>
-<li>查明对手的证书 通过SSL。  </li>
-</ul>
-<p>3.完整性保护  </p>
-<ul>
-<li>MD5 和 SHA-1 等散列值校验的方法,以及用来确认文件的数字签名方法。  <h3 id="HTTP-加密-认证-完整性保护-HTTPS"><a href="#HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="HTTP+ 加密 + 认证 + 完整性保护=HTTPS"></a>HTTP+ 加密 + 认证 + 完整性保护=HTTPS</h3>HTTP通信接口用SSL和TSL协议代替 =&gt; HTTPS有那些功能  </li>
-<li><em>困境*</em>：共享密钥加密困难，通信被监听，密钥暴露  </li>
-<li><em>方案*</em>： 公开加密技术，使用一对密钥，一把是密钥，另一把是公开密钥。发送密文使用对方的公开密钥，自己的私有密钥解密。<br>证明公开密钥正确性的证书<br>SSL的慢：通信慢和消耗CPU及内存等资源，处理速度慢  <h2 id="10-构建Web内容的技术"><a href="#10-构建Web内容的技术" class="headerlink" title="10 构建Web内容的技术"></a>10 构建Web内容的技术</h2>HTML CSS<br>DOM是用以操作HTML文档和XML文档的API,使用JavaScript等脚本语言对DOM的操作，可以更为见到你的方式控制HTML的改变<h3 id="WEB应用"><a href="#WEB应用" class="headerlink" title="WEB应用"></a>WEB应用</h3>由程序创建的内容动态内容<br>事先准备好的内容静态内 容    </li>
-</ul>
-<p><strong>CGI</strong><br><strong>Servet</strong><br><strong>XML</strong>SGML<br><strong>RSS/Atom</strong><br>ajax技术  <strong>JSON</strong>  </p>
-<h2 id="6-HTTP首部-字段"><a href="#6-HTTP首部-字段" class="headerlink" title="6  HTTP首部 字段"></a>6  HTTP首部 字段</h2><h2 id="8-各种认证"><a href="#8-各种认证" class="headerlink" title="8 各种认证"></a>8 各种认证</h2><h2 id="9-基于HTTP的追加协议"><a href="#9-基于HTTP的追加协议" class="headerlink" title="9 基于HTTP的追加协议"></a>9 基于HTTP的追加协议</h2><h2 id="11-Web的攻击技术"><a href="#11-Web的攻击技术" class="headerlink" title="11 Web的攻击技术"></a>11 Web的攻击技术</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/09/%E6%B6%88%E9%99%A4%E9%97%B4%E9%9A%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YOLO">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/09/%E6%B6%88%E9%99%A4%E9%97%B4%E9%9A%99/" itemprop="url">消除间隙</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-09T17:15:15+08:00">
-                2019-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、产生间隙的原因"><a href="#一、产生间隙的原因" class="headerlink" title="一、产生间隙的原因"></a>一、产生间隙的原因</h3><p>书写html代码中，为了美观易读，标签结束后会回车换行，解析后会生成一个字符。    </p>
-<p><img src="/2019/11/09/%E6%B6%88%E9%99%A4%E9%97%B4%E9%9A%99/%E9%97%B4%E9%9A%99%E5%9B%BE.png" alt="间隙图"><br><a href="(https://codepen.io/liaoyulu/pen/WNNzGGe)">链接</a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    child&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">width</span><span class="selector-pseudo">:50px</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">height</span><span class="selector-pseudo">:50px</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>一号<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>二号<span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span> 三号<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>提示</strong>：在IE8-9，火狐，safari，chrome（在chrome下为8px）中，inline-block的元素之间存在“4px”的空白。</p>
-<h3 id="二、消除间隙的方法"><a href="#二、消除间隙的方法" class="headerlink" title="二、消除间隙的方法"></a>二、消除间隙的方法</h3><h4 id="（1）移除标签间的空格（不建议）"><a href="#（1）移除标签间的空格（不建议）" class="headerlink" title="（1）移除标签间的空格（不建议）"></a>（1）移除标签间的空格（不建议）</h4><p>1.将代码写成一行   </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>一号<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>二号<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>三号<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>2.将上一行的结束标签与下一行的开始标签写在一起  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>一号<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></span><br><span class="line">   二号<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span> 三号</span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>3.在两行代码之间加注释标签  </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>一号<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">--&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>二号<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">--&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>三号<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>4.标签不闭合</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>一号</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>二号</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>三号</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="（2）在font-size-0"><a href="#（2）在font-size-0" class="headerlink" title="（2）在font-size:0;"></a>（2）在font-size:0;</h4><p>给父元素设置font-size:0,给子元素设置字体大小.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>:yellow;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">14px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（3）负margin"><a href="#（3）负margin" class="headerlink" title="（3）负margin"></a>（3）负margin</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>:yellow;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">margin</span>:-<span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于外部环境的不确定性，以及最后一个元素多出的负margin值等问题，这个方法不适合大规模使用。</p>
-<h4 id="（4）letter-spacing"><a href="#（4）letter-spacing" class="headerlink" title="（4）letter-spacing"></a>（4）letter-spacing</h4><p>父元素</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">    <span class="attribute">letter-spacing</span>:<span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">    <span class="attribute">letter-spacing</span>:-<span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（5）float-left"><a href="#（5）float-left" class="headerlink" title="（5）float:left"></a>（5）float:left</h4><p>一般文字图片混排用inline-block，如果页面整体布局就用float，用伪类after、before清除浮动即可.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>:yellow;</span><br><span class="line">  <span class="attribute">display</span>:inline-block;</span><br><span class="line">  <span class="attribute">float</span>:left;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">""</span>;</span><br><span class="line">   <span class="attribute">clear</span>:both;</span><br><span class="line">   <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line"> <span class="attribute">border</span>:<span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（6）display-table和word-spacing"><a href="#（6）display-table和word-spacing" class="headerlink" title="（6）display:table和word-spacing"></a>（6）display:table和word-spacing</h4><p>一个是字符间距(letter-spacing)一个是单词间距(word-spacing)，word-spacing的负值只要大到一定程度，其兼容性上的差异就可以被忽略。因为，貌似，word-spacing即使负值很大，也不会发生重叠。<br>果您使用Chrome浏览器，可能看到的是间距依旧存在,可以添加display: table;或display:inline-table;</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">word-spacing</span>:-<span class="number">1em</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三、补充"><a href="#三、补充" class="headerlink" title="三、补充"></a>三、补充</h3><p>有时候inline-block还会遇到顶部不在一个基准线的情况（垂直方向上产生的间隙<br><img src="/2019/11/09/%E6%B6%88%E9%99%A4%E9%97%B4%E9%9A%99/%E5%9E%82%E7%9B%B4%E9%97%B4%E9%9A%99.png" alt="垂直间隙"><br><strong>解决办法</strong>:  </p>
-<ol>
-<li>在每一个子元素上加一个属性vertical-align:top;(或者值是bottom,看具体效果)就在子元素上加vertical-align:bottom;</li>
-<li>如果子标签内加上任意文字，则display:inline-block元素不会生成垂直方向有空白<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4></li>
-<li><a href="https://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/" target="_blank" rel="noopener">去除inline-block元素间间距的N种方法</a><br></li>
-<li><a href="https://www.jb51.net/css/645772.html" target="_blank" rel="noopener">详解CSS 去掉inline-block元素间隙的几种方法</a>  </li>
-<li><a href="https://blog.csdn.net/qq_32614411/article/details/82223624" target="_blank" rel="noopener">display:inline-block元素之间空隙的产生原因和解决办法</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -2039,7 +1984,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2248,6 +2193,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
